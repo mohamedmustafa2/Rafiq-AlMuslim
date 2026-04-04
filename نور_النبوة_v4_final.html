@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>نور النبوة التفاعلي</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#fbbf24;--gold2:#d4a017;--gold-glow:rgba(251,191,36,.35);
+  --blue:#38bdf8;--purple:#a78bfa;--emerald:#34d399;--fire:#ef4444;
+  --navy:#020c1e;--navy2:#05152e;--navy3:#0a1f40;
+  --border-gold:rgba(212,160,23,.3);--text:#f0f4ff;--text2:#8fabd4;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{width:100%;height:100%;overflow:hidden;font-family:"Cairo",sans-serif;background:var(--navy);color:var(--text)}
+/* STARS */
+#starbg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.st{position:absolute;border-radius:50%;background:#fff;animation:tw var(--d,3s) ease-in-out infinite var(--dl,0s);opacity:0}
+@keyframes tw{0%,100%{opacity:.15;transform:scale(1)}50%{opacity:.75;transform:scale(1.5)}}
+/* TAQWA BAR */
+#tqbar{position:fixed;top:12px;right:12px;z-index:600;background:rgba(2,12,30,.92);border:1px solid var(--border-gold);border-radius:20px;padding:5px 12px;display:flex;align-items:center;gap:7px;backdrop-filter:blur(8px)}
+.tql{font-size:.82rem;color:var(--gold);font-weight:700}
+.tqtrack{width:70px;height:7px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden}
+.tqfill{height:100%;background:linear-gradient(90deg,#10b981,#fbbf24);border-radius:4px;width:0%;transition:width .5s}
+.tqnum{font-size:.82rem;color:var(--gold);font-weight:800;min-width:22px;text-align:center}
+/* BADGES */
+#bdgbar{position:fixed;top:12px;left:12px;z-index:600;display:flex;gap:4px;flex-wrap:wrap;max-width:180px}
+.bdg{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;opacity:.28;filter:grayscale(1);transition:all .4s;cursor:help}
+.bdg.on{opacity:1;filter:none;border-color:var(--gold);box-shadow:0 0 10px var(--gold-glow);animation:bpop .5s ease-out}
+@keyframes bpop{0%{transform:scale(0) rotate(-30deg)}65%{transform:scale(1.2) rotate(5deg)}100%{transform:scale(1) rotate(0)}}
+/* APP */
+#app{position:relative;z-index:1;width:100%;height:100%}
+.scr{position:absolute;inset:0;display:none;overflow:hidden}
+.scr.on{display:flex;flex-direction:column;align-items:center;justify-content:center}
+/* COVER */
+#cvr{background:radial-gradient(ellipse at 40% 30%,#0a1f45 0%,#020c1e 65%)}
+.cvr-rays{position:absolute;inset:0;background:conic-gradient(from 0deg at 50% 42%,transparent 0deg,rgba(212,160,23,.035) 18deg,transparent 36deg,rgba(212,160,23,.035) 54deg,transparent 72deg,rgba(212,160,23,.035) 90deg,transparent 108deg,rgba(212,160,23,.035) 126deg,transparent 144deg,rgba(212,160,23,.035) 162deg,transparent 180deg,rgba(212,160,23,.035) 198deg,transparent 216deg,rgba(212,160,23,.035) 234deg,transparent 252deg,rgba(212,160,23,.035) 270deg,transparent 288deg,rgba(212,160,23,.035) 306deg,transparent 324deg,rgba(212,160,23,.035) 342deg,transparent 360deg);animation:spin 50s linear infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.orb{width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,rgba(255,230,100,.95),rgba(251,191,36,.6) 35%,rgba(180,90,0,.25) 65%,transparent 80%);box-shadow:0 0 60px 20px rgba(251,191,36,.45),0 0 120px 50px rgba(251,120,0,.18);animation:orbP 3s ease-in-out infinite;position:relative;z-index:2;display:flex;align-items:center;justify-content:center;font-family:Amiri,serif;font-size:3.5rem;color:rgba(5,15,30,.8);margin-bottom:20px}
+@keyframes orbP{0%,100%{transform:scale(1);box-shadow:0 0 60px 20px rgba(251,191,36,.45)}50%{transform:scale(1.06);box-shadow:0 0 90px 35px rgba(251,191,36,.6)}}
+.cvr-title{font-family:Amiri,serif;font-size:clamp(1.8rem,5.5vw,3rem);font-weight:700;color:var(--gold);text-align:center;text-shadow:0 0 40px rgba(251,191,36,.5);line-height:1.3;position:relative;z-index:2;margin-bottom:6px}
+.cvr-sub{font-size:clamp(.78rem,2vw,.98rem);color:var(--text2);text-align:center;max-width:340px;margin-bottom:22px;position:relative;z-index:2}
+.cvr-div{display:flex;align-items:center;gap:10px;margin-bottom:22px;z-index:2;width:280px}
+.div-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.div-gem{width:8px;height:8px;background:var(--gold);transform:rotate(45deg);box-shadow:0 0 8px var(--gold-glow)}
+.cvr-chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;max-width:360px;z-index:2;margin-bottom:26px}
+.chip{background:rgba(212,160,23,.08);border:1px solid rgba(212,160,23,.22);border-radius:18px;padding:4px 12px;font-size:.74rem;color:rgba(251,191,36,.82)}
+.btn-go{background:linear-gradient(135deg,var(--gold2),#b45309);border:2px solid var(--gold);border-radius:50px;padding:13px 46px;font-family:Cairo,sans-serif;font-size:1.05rem;font-weight:900;color:var(--navy);cursor:pointer;z-index:2;box-shadow:0 0 28px rgba(212,160,23,.5);transition:all .3s;letter-spacing:.5px}
+.btn-go:hover{transform:scale(1.04);box-shadow:0 0 48px rgba(212,160,23,.7)}
+/* SELECTION */
+#sel{background:var(--navy);overflow-y:auto;justify-content:flex-start;padding:65px 14px 20px}
+.sel-hdr{text-align:center;margin-bottom:16px;width:100%}
+.sel-hdr h2{font-family:Amiri,serif;font-size:1.45rem;color:var(--gold);margin-bottom:3px;text-shadow:0 0 18px rgba(251,191,36,.3)}
+.sel-hdr p{color:var(--text2);font-size:.78rem}
+.tabs{display:flex;gap:7px;justify-content:center;margin-bottom:16px;width:100%}
+.tab{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:5px 16px;font-family:Cairo,sans-serif;font-size:.76rem;color:var(--text2);cursor:pointer;transition:all .2s}
+.tab.on{background:rgba(212,160,23,.14);border-color:rgba(212,160,23,.4);color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px;width:100%;max-width:680px}
+.card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 10px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,var(--cc,rgba(251,191,36,.1)) 0%,transparent 70%);opacity:0;transition:opacity .3s}
+.card:hover:not(.lk){transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.3);border-color:var(--cc,var(--gold))}
+.card:hover:not(.lk)::before{opacity:1}
+.card.lk{opacity:.4;cursor:default}
+.card.lk::after{content:"🔒";position:absolute;top:5px;left:5px;font-size:.8rem}
+.card.done{border-color:rgba(52,211,153,.4)}
+.card-ic{font-size:2rem;margin-bottom:7px;display:block;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.card-nm{font-family:Amiri,serif;font-size:.95rem;color:var(--text);font-weight:700;margin-bottom:3px}
+.card-vl{font-size:.68rem;color:var(--text2);background:rgba(255,255,255,.04);border-radius:7px;padding:2px 7px;display:inline-block}
+.card-st{display:flex;gap:2px;justify-content:center;margin-top:5px}
+.cs{font-size:.8rem;color:rgba(251,191,36,.22)}.cs.e{color:var(--gold)}
+.done-ck{position:absolute;top:5px;right:5px;width:16px;height:16px;background:var(--emerald);border-radius:50%;display:none;align-items:center;justify-content:center;font-size:.55rem;color:var(--navy);font-weight:900}
+.card.done .done-ck{display:flex}
+/* STORY */
+#story{background:var(--navy);padding:0}
+.snav{position:absolute;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:9px 13px;background:linear-gradient(to bottom,rgba(2,12,30,.98),rgba(2,12,30,.55),transparent)}
+.bbtn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);border-radius:50%;width:35px;height:35px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text);font-size:.95rem;transition:all .2s}
+.bbtn:hover{border-color:var(--gold);color:var(--gold)}
+.snav-title{font-family:Amiri,serif;font-size:.95rem;color:var(--gold);text-shadow:0 0 14px rgba(251,191,36,.4)}
+.dots{display:flex;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);transition:all .3s;cursor:pointer}
+.dot.on{background:var(--gold);box-shadow:0 0 6px var(--gold-glow);transform:scale(1.3)}
+.pwrap{width:100%;height:100%;position:relative;perspective:1200px}
+.page{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.page.on{display:flex}
+/* الجزء البصري يأخذ كل المساحة المتبقية فوق لوحة النصوص */
+.vis{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:0;flex-shrink:0;height:calc(100% - var(--cov-h,220px))}
+/* لوحة النصوص السفلية — ارتفاع ثابت قابل للتمرير */
+.cov{position:absolute;bottom:0;left:0;right:0;z-index:20;max-height:62%;overflow-y:auto;padding:12px 12px 10px;background:linear-gradient(to top,rgba(2,12,30,1) 0%,rgba(2,12,30,.95) 70%,rgba(2,12,30,.7) 100%);border-top:1px solid rgba(212,160,23,.08)}
+.vbox{background:rgba(212,160,23,.07);border:1px solid rgba(212,160,23,.2);border-radius:9px;padding:8px 12px;margin-bottom:8px;font-family:Amiri,serif;font-size:clamp(.78rem,.9rem,1rem);color:var(--gold);line-height:1.85;text-align:center}
+.stxt{font-size:clamp(.78rem,.86rem,1rem);color:var(--text2);line-height:1.72;margin-bottom:9px}
+.stxt strong{color:var(--text)}
+.hbox{display:flex;align-items:center;gap:7px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);border-radius:8px;padding:6px 10px;margin-bottom:8px;font-size:clamp(.7rem,.77rem,1rem);color:var(--blue);animation:hblink 2.5s ease-in-out infinite}
+@keyframes hblink{0%,100%{border-color:rgba(56,189,248,.18)}50%{border-color:rgba(56,189,248,.5)}}
+.vpill{display:inline-flex;align-items:center;gap:5px;background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.22);border-radius:12px;padding:3px 10px;font-size:.7rem;color:var(--emerald);margin-bottom:8px}
+.navr{display:flex;gap:8px;position:sticky;bottom:0;padding-top:6px;background:rgba(2,12,30,.95)}
+.bnxt,.bprv{flex:1;padding:9px 6px;border-radius:9px;font-family:Cairo,sans-serif;font-size:clamp(.8rem,.88rem,1rem);font-weight:800;border:none;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:5px}
+.bnxt{background:linear-gradient(135deg,var(--gold2),#b45309);color:var(--navy);box-shadow:0 4px 14px rgba(212,160,23,.28)}
+.bnxt:hover{transform:scale(1.02);box-shadow:0 6px 20px rgba(212,160,23,.42)}
+.bprv{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--text)}
+/* REWARD */
+#rwd{position:fixed;inset:0;z-index:700;display:none;align-items:center;justify-content:center;background:rgba(2,12,30,.86);backdrop-filter:blur(10px)}
+#rwd.on{display:flex}
+.rbox{background:linear-gradient(145deg,#071030,#030c22);border:2px solid var(--gold);border-radius:26px;padding:34px 26px;text-align:center;max-width:330px;width:92%;box-shadow:0 0 70px rgba(212,160,23,.28);animation:rIn .5s ease-out}
+@keyframes rIn{from{transform:scale(.75);opacity:0}to{transform:scale(1);opacity:1}}
+.ric{font-size:3.8rem;display:block;animation:bpop .7s ease-out}
+.rtitle{font-family:Amiri,serif;font-size:1.5rem;color:var(--gold);margin:11px 0 5px}
+.rval{background:rgba(52,211,153,.09);border:1px solid rgba(52,211,153,.28);border-radius:13px;padding:5px 16px;font-size:.82rem;color:var(--emerald);display:inline-block;margin-bottom:10px}
+.rmsg{color:var(--text2);font-size:.85rem;line-height:1.6;margin-bottom:18px}
+.rclose{background:linear-gradient(135deg,var(--gold2),#b45309);border:none;border-radius:28px;padding:10px 32px;font-family:Cairo,sans-serif;font-size:.92rem;font-weight:800;color:var(--navy);cursor:pointer;box-shadow:0 0 18px rgba(212,160,23,.38);transition:all .3s}
+.rclose:hover{transform:scale(1.04)}
+/* SCENE GENERICS */
+canvas.mc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.scene{width:100%;height:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.aura{position:absolute;border-radius:50%;animation:auraPulse 3s ease-in-out infinite}
+@keyframes auraPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.9;transform:scale(1.1)}}
+/* VALUE PAGE — صفحة القيمة تملأ .vis كاملاً وتسمح بالتمرير داخلياً */
+.vpage{width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#071530,#020c1e);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:16px 16px 12px;text-align:center;overflow-y:auto;gap:8px}
+.vic{font-size:3.2rem;flex-shrink:0;animation:orbP 2s ease-out}
+.vtitle{font-family:Amiri,serif;font-size:clamp(1.2rem,1.7rem,2rem);color:var(--gold);text-shadow:0 0 18px rgba(251,191,36,.4);line-height:1.3}
+.vdesc{color:var(--text2);font-size:clamp(.78rem,.85rem,1rem);line-height:1.75;max-width:310px}
+.vhadith{background:rgba(212,160,23,.06);border-right:3px solid var(--gold);border-radius:8px;padding:9px 12px;font-family:Amiri,serif;color:rgba(251,191,36,.88);font-size:clamp(.78rem,.88rem,1rem);line-height:1.85;text-align:right;max-width:310px;width:100%}
+/* QUIZ */
+.qwrap{width:100%;max-width:320px}
+.qq{font-family:Amiri,serif;font-size:clamp(.88rem,1rem,1.1rem);color:var(--text);text-align:center;margin-bottom:10px;line-height:1.6}
+.qopts{display:flex;flex-direction:column;gap:6px}
+.qopt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:9px;padding:9px 12px;cursor:pointer;font-size:clamp(.76rem,.84rem,1rem);color:var(--text);transition:all .2s;text-align:right;line-height:1.5}
+.qopt:hover:not(.answered){background:rgba(255,255,255,.09);border-color:var(--blue)}
+.qopt.correct{background:rgba(52,211,153,.11);border-color:var(--emerald);color:var(--emerald)}
+.qopt.wrong{background:rgba(239,68,68,.08);border-color:#ef4444;color:#f87171}
+/* FACELESS ART */
+.fs-scene{width:100%;height:100%;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* NOAH */
+.noah-bg{width:100%;height:100%;background:linear-gradient(180deg,#2a1500,#6b3a00 40%,#c4962a 100%);position:relative;overflow:hidden;cursor:pointer}
+.noah-sun{width:75px;height:75px;background:radial-gradient(circle,#ffd700,#ff8c00);border-radius:50%;position:absolute;top:12%;right:18%;box-shadow:0 0 45px rgba(255,200,0,.65);animation:sunb 5s ease-in-out infinite}
+@keyframes sunb{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+/* IBRAHIM FIRE */
+.fire-bg{width:100%;height:100%;background:radial-gradient(ellipse at 50% 60%,#3d0808,#150202 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.fwrap{position:relative;width:170px;height:210px}
+.fl{position:absolute;bottom:0;border-radius:50% 50% 20% 20%;transform-origin:bottom center;animation:fla 1.5s ease-in-out infinite}
+.fl1{width:105px;height:185px;left:33px;background:radial-gradient(ellipse at bottom,#ff5500,#cc0000,transparent);animation-delay:0s}
+.fl2{width:80px;height:155px;left:45px;background:radial-gradient(ellipse at bottom,#ff8800,#ff3300,transparent);animation-delay:.2s}
+.fl3{width:60px;height:125px;left:55px;background:radial-gradient(ellipse at bottom,#ffd700,#ff8800,transparent);animation-delay:.35s}
+.fl4{width:42px;height:90px;left:64px;background:radial-gradient(ellipse at bottom,#fff,#ffd700,transparent);animation-delay:.15s}
+@keyframes fla{0%,100%{transform:scaleX(1) scaleY(1) translateY(0)}30%{transform:scaleX(.93) scaleY(1.04) translateY(-5px)}60%{transform:scaleX(1.04) scaleY(.97) translateY(-3px)}}
+.fcenter{position:absolute;width:48px;height:48px;background:radial-gradient(circle,rgba(255,255,255,.95),rgba(56,189,248,.5),transparent);border-radius:50%;top:45%;left:50%;transform:translate(-50%,-50%);animation:fcg 2s ease-in-out infinite;z-index:5}
+@keyframes fcg{0%,100%{opacity:.7;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.32)}}
+.cool-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,.6),rgba(52,211,153,.42));opacity:0;transition:opacity 1.8s;pointer-events:none}
+/* MOSES */
+.sea-bg{width:100%;height:100%;background:linear-gradient(180deg,#1a0a2e,#060a22 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* HIRA */
+.hira-bg{width:100%;height:100%;background:radial-gradient(ellipse at 50% 60%,#0d0520,#020818 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;cursor:pointer}
+/* KAABA */
+.kaaba-bg{width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#080820,#020818 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+/* SCAVENGER */
+.scav{position:absolute;font-size:1.45rem;cursor:pointer;animation:scf var(--sfd,3.5s) ease-in-out infinite var(--sdd,0s);filter:drop-shadow(0 0 7px rgba(251,191,36,.45));z-index:14}
+@keyframes scf{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.1)}}
+.scav.found{opacity:0!important;pointer-events:none;transition:opacity .3s}
+.shud{position:absolute;top:8px;right:8px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.28);border-radius:11px;padding:3px 9px;font-size:.68rem;color:var(--gold);z-index:18;font-family:Cairo,sans-serif}
+@media(max-width:400px){.grid{grid-template-columns:repeat(2,1fr)}.cvr-title{font-size:1.6rem}}
+
+/* ═══ FLIPBOOK ═══ */
+.page{transform-style:preserve-3d;backface-visibility:hidden}
+@keyframes flipRight{
+  0%  {transform:rotateY(0deg) scale(1);opacity:1}
+  40% {transform:rotateY(-90deg) scale(.95);opacity:.4}
+  100%{transform:rotateY(0deg) scale(1);opacity:1}
+}
+@keyframes flipLeft{
+  0%  {transform:rotateY(0deg) scale(1);opacity:1}
+  40% {transform:rotateY(90deg) scale(.95);opacity:.4}
+  100%{transform:rotateY(0deg) scale(1);opacity:1}
+}
+.flip-r{animation:flipRight .42s ease-in-out}
+.flip-l{animation:flipLeft  .42s ease-in-out}
+/* page-turn shadow overlay */
+.page-shadow{position:absolute;inset:0;pointer-events:none;z-index:99;background:linear-gradient(90deg,rgba(0,0,0,.35),transparent);opacity:0;transition:opacity .42s}
+
+/* ═══ SOUND TOGGLE ═══ */
+#soundbtn{position:fixed;bottom:14px;right:14px;z-index:650;width:38px;height:38px;border-radius:50%;background:rgba(2,12,30,.92);border:1px solid var(--border-gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;backdrop-filter:blur(8px);transition:all .25s;box-shadow:0 0 12px rgba(212,160,23,.2)}
+#soundbtn:hover{border-color:var(--gold);box-shadow:0 0 20px rgba(212,160,23,.4)}
+
+/* ═══ SOUND RIPPLE ═══ */
+@keyframes ripple{0%{transform:scale(0);opacity:.7}100%{transform:scale(2.8);opacity:0}}
+.sripple{position:fixed;width:60px;height:60px;border-radius:50%;background:rgba(212,160,23,.25);pointer-events:none;z-index:900;transform:scale(0);animation:ripple .5s ease-out forwards}
+</style>
+</head>
+<body>
+<div id="starbg"></div>
+<button id="soundbtn" title="الصوت" onclick="toggleSound()">🔊</button>
+<div id="tqbar"><span class="tql">🌟 نقاط التقوى:</span><div class="tqtrack"><div class="tqfill" id="tqf"></div></div><span class="tqnum" id="tqn">0</span></div>
+<div id="bdgbar">
+  <div class="bdg" id="b-sabr" title="الصبر">⏳</div>
+  <div class="bdg" id="b-iqan" title="اليقين">🔥</div>
+  <div class="bdg" id="b-shja" title="الشجاعة">⚡</div>
+  <div class="bdg" id="b-rahma" title="الرحمة">🕊</div>
+  <div class="bdg" id="b-amana" title="الأمانة">💍</div>
+  <div class="bdg" id="b-sidq" title="الصدق">📜</div>
+  <div class="bdg" id="b-adl" title="العدل">⚖️</div>
+  <div class="bdg" id="b-jihad" title="الجهاد">🛡</div>
+  <div class="bdg" id="b-tawba" title="التوبة">💚</div>
+  <div class="bdg" id="b-shukr" title="الشكر">🌹</div>
+</div>
+<div id="rwd"><div class="rbox">
+  <span class="ric" id="ric">⭐</span>
+  <div class="rtitle" id="rtitle">أحسنت!</div>
+  <div class="rval" id="rval">القيمة: الصبر</div>
+  <div class="rmsg" id="rmsg">أتممت القصة!</div>
+  <button class="rclose" data-action="closer">الحمد لله ✨</button>
+</div></div>
+<div id="app">
+<!-- COVER -->
+<div class="scr on" id="cvr">
+  <div class="cvr-rays"></div>
+  <div class="orb">📖</div>
+  <h1 class="cvr-title">نور النبوة التفاعلي</h1>
+  <p class="cvr-sub">رحلة تفاعلية مع 25 نبياً و20 صحابياً — التوقير الشرعي مع الإبهار التقني</p>
+  <div class="cvr-div"><div class="div-line"></div><div class="div-gem"></div><div class="div-line"></div></div>
+  <div class="cvr-chips">
+    <div class="chip">⛵ نوح</div><div class="chip">🔥 إبراهيم</div><div class="chip">🌊 موسى</div>
+    <div class="chip">🕊 عيسى</div><div class="chip">🌙 محمد ﷺ</div><div class="chip">📜 الصحابة</div>
+    <div class="chip">25 نبياً</div><div class="chip">20 صحابياً</div>
+  </div>
+  <button class="btn-go" data-action="go" data-val="sel">ابدأ رحلتك ✨</button>
+</div>
+<!-- SELECTION -->
+<div class="scr" id="sel" style="justify-content:flex-start">
+  <div class="sel-hdr">
+    <button class="bbtn" data-action="go" data-val="cvr" style="margin:0 auto 10px">→</button>
+    <h2>اختر قصة</h2><p>25 نبياً و20 صحابياً — كل قصة تعلمك قيمة</p>
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-action="tab" data-val="p">⭐ الأنبياء (25)</button>
+    <button class="tab" data-action="tab" data-val="s">🌟 الصحابة (20)</button>
+  </div>
+  <div class="grid" id="pgrid"></div>
+  <div class="grid" id="sgrid" style="display:none"></div>
+</div>
+<!-- STORY -->
+<div class="scr" id="story">
+  <div class="snav">
+    <button class="bbtn" data-action="go" data-val="sel">→</button>
+    <div class="snav-title" id="stitle">القصة</div>
+    <div class="dots" id="sdots"></div>
+  </div>
+  <div class="pwrap" id="pwrap"></div>
+</div>
+</div>
+<script>
+/* ═══ STARS ═══ */
+(function(){var bg=document.getElementById("starbg");for(var i=0;i<120;i++){var s=document.createElement("div");s.className="st";var sz=Math.random()*2.4+.5;s.style.cssText="width:"+sz+"px;height:"+sz+"px;top:"+(Math.random()*100)+"%;left:"+(Math.random()*100)+"%;--d:"+(Math.random()*4+2)+"s;--dl:"+(Math.random()*4)+"s";bg.appendChild(s);}})();
+
+/* ═══ STATE ═══ */
+var TQ=parseInt(localStorage.getItem("nrtq")||"0");
+var EARNED=JSON.parse(localStorage.getItem("nrearn")||"[]");
+var BDGS=JSON.parse(localStorage.getItem("nrbdg")||"[]");
+var CUR_ID="",CUR_PAGES=[],CUR_P=0;
+
+/* ═══ SOUND ENGINE ═══ */
+var _ac=null,_muted=localStorage.getItem("nrmute")==="1";
+function getAC(){if(!_ac){try{_ac=new(window.AudioContext||window.webkitAudioContext)();}catch(e){}}return _ac;}
+function toggleSound(){_muted=!_muted;localStorage.setItem("nrmute",_muted?"1":"0");document.getElementById("soundbtn").textContent=_muted?"🔇":"🔊";}
+if(_muted)document.addEventListener("DOMContentLoaded",function(){var b=document.getElementById("soundbtn");if(b)b.textContent="🔇";});
+
+function _beep(freq,dur,type,vol,attack,decay){
+  var ac=getAC();if(!ac||_muted)return;
+  try{
+    var o=ac.createOscillator(),g=ac.createGain();
+    o.connect(g);g.connect(ac.destination);
+    o.type=type||"sine";o.frequency.setValueAtTime(freq,ac.currentTime);
+    var v=vol||0.18,a=attack||0.01,d=decay||dur;
+    g.gain.setValueAtTime(0,ac.currentTime);
+    g.gain.linearRampToValueAtTime(v,ac.currentTime+a);
+    g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+a+d);
+    o.start(ac.currentTime);o.stop(ac.currentTime+a+d+0.01);
+  }catch(e){}
+}
+function _noise(dur,vol){
+  var ac=getAC();if(!ac||_muted)return;
+  try{
+    var buf=ac.createBuffer(1,ac.sampleRate*dur,ac.sampleRate),d=buf.getChannelData(0);
+    for(var i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(vol||0.06);
+    var src=ac.createBufferSource(),g=ac.createGain(),fil=ac.createBiquadFilter();
+    fil.type="bandpass";fil.frequency.value=1200;fil.Q.value=0.6;
+    src.buffer=buf;src.connect(fil);fil.connect(g);g.connect(ac.destination);
+    g.gain.setValueAtTime(vol||0.06,ac.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+dur);
+    src.start();src.stop(ac.currentTime+dur+0.01);
+  }catch(e){}
+}
+
+/* Sound presets */
+function sndFlip(){
+  // paper whoosh
+  _noise(0.14,0.09);
+  _beep(420,0.06,"triangle",0.06,0.005,0.06);
+  _beep(380,0.08,"triangle",0.04,0.01,0.08);
+}
+function sndClick(){_beep(660,0.07,"sine",0.12,0.005,0.07);}
+function sndCorrect(){
+  _beep(523,0.12,"sine",0.14,0.01,0.12);
+  setTimeout(function(){_beep(659,0.12,"sine",0.14,0.01,0.12);},120);
+  setTimeout(function(){_beep(784,0.18,"sine",0.16,0.01,0.2);},240);
+}
+function sndWrong(){
+  _beep(220,0.08,"sawtooth",0.1,0.01,0.08);
+  setTimeout(function(){_beep(185,0.14,"sawtooth",0.08,0.01,0.14);},100);
+}
+function sndBadge(){
+  [523,659,784,1047].forEach(function(f,i){setTimeout(function(){_beep(f,0.15,"sine",0.14,0.01,0.15);},i*90);});
+}
+function sndComplete(){
+  var notes=[523,587,659,698,784,880,988,1047];
+  notes.forEach(function(f,i){setTimeout(function(){_beep(f,0.18,"sine",0.15,0.01,0.18);},i*80);});
+}
+function sndStarBurst(){
+  _beep(880,0.05,"sine",0.18,0.005,0.05);
+  _noise(0.12,0.07);
+  setTimeout(function(){_beep(1100,0.12,"sine",0.12,0.005,0.12);},60);
+}
+function sndPage(){_beep(300,0.05,"triangle",0.08,0.005,0.05);_noise(0.08,0.05);}
+function sndOpen(){
+  _beep(392,0.1,"sine",0.1,0.01,0.1);
+  setTimeout(function(){_beep(494,0.12,"sine",0.12,0.01,0.12);},110);
+}
+
+
+function addTQ(n){TQ+=n;localStorage.setItem("nrtq",TQ);document.getElementById("tqn").textContent=TQ;document.getElementById("tqf").style.width=Math.min(TQ/400*100,100)+"%";sndStarBurst();}
+function awardBdg(id){if(BDGS.includes(id))return;BDGS.push(id);localStorage.setItem("nrbdg",JSON.stringify(BDGS));var el=document.getElementById("b-"+id);if(el)el.classList.add("on");sndBadge();}
+function initUI(){document.getElementById("tqn").textContent=TQ;document.getElementById("tqf").style.width=Math.min(TQ/400*100,100)+"%";BDGS.forEach(function(id){var el=document.getElementById("b-"+id);if(el)el.classList.add("on");});var sb=document.getElementById("soundbtn");if(sb)sb.textContent=_muted?"🔇":"🔊";}
+initUI();
+
+/* ═══ NAV ═══ */
+var activeAnimations=[];
+function go(id){activeAnimations.forEach(function(aid){cancelAnimationFrame(aid);});activeAnimations=[];document.querySelectorAll(".scr").forEach(function(s){s.classList.remove("on");});document.getElementById(id).classList.add("on");if(id==="sel"){buildGrids();}sndClick();}
+function showTab(t){
+  sndClick();
+  document.querySelectorAll(".tab").forEach(function(b,i){b.classList.toggle("on",t==="p"?i===0:i===1);});
+  document.getElementById("pgrid").style.display=t==="p"?"grid":"none";
+  document.getElementById("sgrid").style.display=t==="s"?"grid":"none";
+}
+
+/* ═══ PROPHETS DATA (25) ═══ */
+var PROPHETS=[
+  {id:"noah",name:"نوح",full:"نوح عليه السلام",icon:"⛵",val:"الصبر والتوكل",bdg:"sabr",avail:true,color:"#38bdf8"},
+  {id:"ibrahim",name:"إبراهيم",full:"إبراهيم عليه السلام",icon:"🔥",val:"اليقين بالله",bdg:"iqan",avail:true,color:"#f97316"},
+  {id:"moses",name:"موسى",full:"موسى عليه السلام",icon:"🌊",val:"الشجاعة",bdg:"shja",avail:true,color:"#34d399"},
+  {id:"jesus",name:"عيسى",full:"عيسى عليه السلام",icon:"🕊",val:"الرحمة",bdg:"rahma",avail:true,color:"#c084fc"},
+  {id:"muhammad",name:"محمد ﷺ",full:"محمد ﷺ",icon:"🌙",val:"الأمانة والصدق",bdg:"amana",avail:true,color:"#fbbf24"},
+  {id:"adam",name:"آدم",full:"آدم عليه السلام",icon:"🌿",val:"التوبة",bdg:"tawba",avail:true,color:"#34d399"},
+  {id:"yusuf",name:"يوسف",full:"يوسف عليه السلام",icon:"👑",val:"العفو والصبر",bdg:"sabr",avail:true,color:"#fbbf24"},
+  {id:"yunus",name:"يونس",full:"يونس عليه السلام",icon:"🐋",val:"التوبة والرجوع",bdg:"tawba",avail:true,color:"#38bdf8"},
+  {id:"dawud",name:"داود",full:"داود عليه السلام",icon:"🎵",val:"الحكمة والشكر",bdg:"shukr",avail:true,color:"#a78bfa"},
+  {id:"sulaiman",name:"سليمان",full:"سليمان عليه السلام",icon:"🦅",val:"الشكر والتواضع",bdg:"shukr",avail:true,color:"#fbbf24"},
+  {id:"ayyub",name:"أيوب",full:"أيوب عليه السلام",icon:"💎",val:"الصبر على البلاء",bdg:"sabr",avail:true,color:"#60a5fa"},
+  {id:"zakariya",name:"زكريا",full:"زكريا عليه السلام",icon:"🌸",val:"الدعاء واليقين",bdg:"iqan",avail:true,color:"#f472b6"},
+  {id:"yahya",name:"يحيى",full:"يحيى عليه السلام",icon:"🌱",val:"الزهد والنقاء",bdg:"sabr",avail:true,color:"#34d399"},
+  {id:"ismail",name:"إسماعيل",full:"إسماعيل عليه السلام",icon:"🐏",val:"الطاعة والفداء",bdg:"shja",avail:true,color:"#fbbf24"},
+  {id:"ishaq",name:"إسحاق",full:"إسحاق عليه السلام",icon:"⭐",val:"البركة والإيمان",bdg:"iqan",avail:true,color:"#fbbf24"},
+  {id:"yaqub",name:"يعقوب",full:"يعقوب عليه السلام",icon:"🌙",val:"الصبر الجميل",bdg:"sabr",avail:true,color:"#fbbf24"},
+  {id:"lut",name:"لوط",full:"لوط عليه السلام",icon:"🏔",val:"الثبات على الحق",bdg:"shja",avail:true,color:"#94a3b8"},
+  {id:"hud",name:"هود",full:"هود عليه السلام",icon:"🌬",val:"الدعوة بثبات",bdg:"sabr",avail:true,color:"#6ee7b7"},
+  {id:"saleh",name:"صالح",full:"صالح عليه السلام",icon:"🐪",val:"الصدق مع القوم",bdg:"sidq",avail:true,color:"#fcd34d"},
+  {id:"shuayb",name:"شعيب",full:"شعيب عليه السلام",icon:"⚖️",val:"العدل في التجارة",bdg:"adl",avail:true,color:"#86efac"},
+  {id:"haroon",name:"هارون",full:"هارون عليه السلام",icon:"🌿",val:"التعاون والأخوة",bdg:"rahma",avail:true,color:"#6ee7b7"},
+  {id:"idris",name:"إدريس",full:"إدريس عليه السلام",icon:"📐",val:"العلم والحكمة",bdg:"shukr",avail:true,color:"#a5b4fc"},
+  {id:"ilyas",name:"إلياس",full:"إلياس عليه السلام",icon:"⚡",val:"الشجاعة في الدعوة",bdg:"shja",avail:true,color:"#7dd3fc"},
+  {id:"alyasa",name:"اليسع",full:"اليسع عليه السلام",icon:"💧",val:"الإيمان والصبر",bdg:"sabr",avail:true,color:"#93c5fd"},
+  {id:"dhulkifl",name:"ذو الكفل",full:"ذو الكفل عليه السلام",icon:"🌟",val:"الوفاء بالعهد",bdg:"amana",avail:true,color:"#fde68a"},
+];
+
+/* ═══ SAHABA DATA (20) ═══ */
+var SAHABA=[
+  /* العشرة المبشرون */
+  {id:"abu_bakr",name:"أبو بكر",full:"أبو بكر الصديق رضي الله عنه",icon:"📜",val:"الصدق",bdg:"sidq",avail:true,color:"#fbbf24",sym:"الوشاح الأبيض",grp:"العشرة المبشرون"},
+  {id:"omar",name:"عمر",full:"عمر بن الخطاب رضي الله عنه",icon:"⚖️",val:"العدل",bdg:"adl",avail:true,color:"#6366f1",sym:"الرداء الداكن والعصا",grp:"العشرة المبشرون"},
+  {id:"uthman",name:"عثمان",full:"عثمان بن عفان رضي الله عنه",icon:"📖",val:"الكرم",bdg:"shukr",avail:true,color:"#34d399",sym:"المصحف والسيف",grp:"العشرة المبشرون"},
+  {id:"ali",name:"علي",full:"علي بن أبي طالب رضي الله عنه",icon:"🛡",val:"الفداء والشجاعة",bdg:"shja",avail:true,color:"#38bdf8",sym:"الدرع والرمح",grp:"العشرة المبشرون"},
+  {id:"talha",name:"طلحة",full:"طلحة بن عبيدالله رضي الله عنه",icon:"⚔️",val:"التضحية",bdg:"shja",avail:true,color:"#f97316",sym:"اليد المفدية",grp:"العشرة المبشرون"},
+  {id:"zubayr",name:"الزبير",full:"الزبير بن العوام رضي الله عنه",icon:"🗡",val:"الوفاء",bdg:"amana",avail:true,color:"#60a5fa",sym:"السيف المتوهج",grp:"العشرة المبشرون"},
+  {id:"abdulrahman",name:"عبدالرحمن",full:"عبدالرحمن بن عوف رضي الله عنه",icon:"💰",val:"الكرم والتجارة الحلال",bdg:"shukr",avail:true,color:"#fde68a",sym:"كيس الذهب للفقراء",grp:"العشرة المبشرون"},
+  {id:"saad",name:"سعد بن أبي وقاص",full:"سعد بن أبي وقاص رضي الله عنه",icon:"🏹",val:"الإتقان والدقة",bdg:"shja",avail:true,color:"#f472b6",sym:"القوس والسهم",grp:"العشرة المبشرون"},
+  {id:"saeed",name:"سعيد بن زيد",full:"سعيد بن زيد رضي الله عنه",icon:"🌿",val:"الإيمان المبكر",bdg:"iqan",avail:true,color:"#34d399",sym:"اليد المرفوعة",grp:"العشرة المبشرون"},
+  {id:"abu_ubayda",name:"أبو عبيدة",full:"أبو عبيدة عامر الجراح رضي الله عنه",icon:"🛡",val:"الأمانة",bdg:"amana",avail:true,color:"#a78bfa",sym:"الدرع والوقار",grp:"العشرة المبشرون"},
+  /* صحابة آخرون */
+  {id:"khalid",name:"خالد",full:"خالد بن الوليد رضي الله عنه",icon:"⚔️",val:"الانتصار بالله",bdg:"jihad",avail:true,color:"#ef4444",sym:"السيف والخيل",grp:"قادة الإسلام"},
+  {id:"amr",name:"عمرو بن العاص",full:"عمرو بن العاص رضي الله عنه",icon:"🗺",val:"الذكاء والحكمة",bdg:"shukr",avail:true,color:"#f97316",sym:"الخريطة والسيف",grp:"قادة الإسلام"},
+  {id:"ikrima",name:"عكرمة",full:"عكرمة بن أبي جهل رضي الله عنه",icon:"🌟",val:"التحول والتوبة",bdg:"tawba",avail:true,color:"#c084fc",sym:"النجمة المتحولة",grp:"قادة الإسلام"},
+  {id:"bilal",name:"بلال",full:"بلال بن رباح رضي الله عنه",icon:"🕌",val:"الثبات على الإيمان",bdg:"shja",avail:true,color:"#fbbf24",sym:"الرأس المرفوع",grp:"المبكرون"},
+  {id:"ammar",name:"عمار",full:"عمار بن ياسر رضي الله عنه",icon:"🌺",val:"الصبر على الأذى",bdg:"sabr",avail:true,color:"#f472b6",sym:"الأسرة الصابرة",grp:"المبكرون"},
+  {id:"musab",name:"مصعب",full:"مصعب بن عمير رضي الله عنه",icon:"📚",val:"التضحية بالدنيا",bdg:"rahma",avail:true,color:"#38bdf8",sym:"الكتاب والرسالة",grp:"الدعوة"},
+  {id:"khabbab",name:"خبّاب",full:"خباب بن الأرت رضي الله عنه",icon:"🔥",val:"الصبر على الإيذاء",bdg:"sabr",avail:true,color:"#f97316",sym:"الصخرة الحامية",grp:"المبكرون"},
+  {id:"sumayya",name:"سمية",full:"سمية أم عمار رضي الله عنها",icon:"👑",val:"الشهادة في سبيل الله",bdg:"shja",avail:true,color:"#c084fc",sym:"التاج والنور",grp:"الشهداء"},
+  {id:"khadija",name:"خديجة",full:"خديجة أم المؤمنين رضي الله عنها",icon:"❤",val:"الوفاء والدعم",bdg:"rahma",avail:true,color:"#f472b6",sym:"القلب والإسناد",grp:"أمهات المؤمنين"},
+  {id:"abu_dharr",name:"أبو ذر",full:"أبو ذر الغفاري رضي الله عنه",icon:"⭐",val:"الزهد والصدق",bdg:"sidq",avail:true,color:"#60a5fa",sym:"النجمة والزهد",grp:"الزهاد"},
+];
+
+/* ═══ BUILD GRIDS ═══ */
+function buildGrids(){
+  var pg=document.getElementById("pgrid");
+  pg.innerHTML=PROPHETS.map(function(p){
+    var done=EARNED.includes(p.id);
+    var st=[1,2,3].map(function(i){return '<span class="cs'+(done&&i<=3?" e":"")+'">★</span>';}).join("");
+    var clickable=p.avail?(' data-action="start" data-val="'+p.id+'"'):"";
+    return '<div class="card'+(p.avail?"":" lk")+(done?" done":"")+" "+p.id+'" style="--cc:'+p.color+'"'+clickable+'>'
+      +'<div class="done-ck">✓</div>'
+      +'<span class="card-ic">'+p.icon+'</span>'
+      +'<div class="card-nm">'+p.name+'</div>'
+      +'<div class="card-vl">'+p.val+'</div>'
+      +'<div class="card-st">'+st+"</div>"
+      +"</div>";
+  }).join("");
+  var sg=document.getElementById("sgrid");
+  sg.innerHTML=SAHABA.map(function(s){
+    var done=EARNED.includes(s.id);
+    return '<div class="card'+(done?" done":"")+" "+s.id+'" style="--cc:'+s.color+'" data-action="start" data-val="'+s.id+'">'
+      +'<div class="done-ck">✓</div>'
+      +'<span class="card-ic">'+s.icon+'</span>'
+      +'<div class="card-nm">'+s.name+'</div>'
+      +'<div class="card-vl">'+s.val+'</div>'
+      +'<div style="font-size:.62rem;color:var(--text2);margin-top:3px">'+s.grp+'</div>'
+      +"</div>";
+  }).join("");
+}
+function startStory(id){
+  sndOpen();
+  CUR_ID=id;CUR_P=0;
+  var all=PROPHETS.concat(SAHABA);
+  var p=all.find(function(x){return x.id===id;});
+  document.getElementById("stitle").textContent=p.full;
+  CUR_PAGES=getPages(id);
+  renderPages();go("story");showPageN(0);
+}
+function renderPages(){
+  var wrap=document.getElementById("pwrap");
+  wrap.innerHTML=CUR_PAGES.map(function(p,i){
+    return '<div class="page'+(i===0?" on":"")+'" id="pg'+i+'">'
+      +'<div class="vis">'+p.visual+"</div>"
+      +'<div class="cov">'
+        +(p.hint?'<div class="hbox">👆 '+p.hint+"</div>":"")
+        +(p.verse?'<div class="vbox">'+p.verse+"</div>":"")
+        +(p.vpill?'<div class="vpill">💎 '+p.vpill+"</div>":"")
+        +(p.text?'<p class="stxt">'+p.text+"</p>":"")
+        +'<div class="navr">'
+          +(i>0?'<button class="bprv" data-action="prev">السابق →</button>':"")
+          +'<button class="bnxt" data-action="next">'+(i<CUR_PAGES.length-1?"← التالي":"أنهيت القصة ⭐")+"</button>"
+        +"</div>"
+      +"</div></div>";
+  }).join("");
+  var dots=document.getElementById("sdots");
+  dots.innerHTML=CUR_PAGES.map(function(_,i){return '<div class="dot'+(i===0?" on":"")+'" onclick="showPageN('+i+')"></div>';}).join("");
+  setTimeout(initInteractions,100);
+}
+function showPageN(n){
+  var dir = n > CUR_P ? "r" : "l";
+  var cur=document.getElementById("pg"+CUR_P);
+  var nxt=document.getElementById("pg"+n);
+  if(!nxt)return;
+  if(cur && cur!==nxt){
+    sndFlip();
+    var cls=dir==="r"?"flip-r":"flip-l";
+    cur.classList.remove("on");
+    nxt.classList.add("on");
+    nxt.classList.add(cls);
+    nxt.addEventListener("animationend",function once(){nxt.classList.remove(cls);nxt.removeEventListener("animationend",once);});
+  } else {
+    document.querySelectorAll(".page").forEach(function(p,i){p.classList.toggle("on",i===n);});
+  }
+  document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("on",i===n);});
+  CUR_P=n;
+}
+function nextP(){if(CUR_P<CUR_PAGES.length-1)showPageN(CUR_P+1);else completeStory();}
+function prevP(){if(CUR_P>0)showPageN(CUR_P-1);}
+function completeStory(){
+  var all=PROPHETS.concat(SAHABA);var p=all.find(function(x){return x.id===CUR_ID;});
+  var isNew=!EARNED.includes(CUR_ID);
+  if(isNew){EARNED.push(CUR_ID);localStorage.setItem("nrearn",JSON.stringify(EARNED));addTQ(50);if(p.bdg)awardBdg(p.bdg);}
+  document.getElementById("ric").textContent=p.icon;
+  document.getElementById("rtitle").textContent=isNew?"أحسنت يا بطل! 🌟":"مراجعة ممتازة!";
+  document.getElementById("rval").textContent="اكتسبت قيمة: "+p.val;
+  document.getElementById("rmsg").textContent="أتممت قصة "+p.full+(isNew?" وكسبت 50 نقطة تقوى!":".");
+  document.getElementById("rwd").classList.add("on");
+  sndComplete();
+}
+function closeR(){document.getElementById("rwd").classList.remove("on");go("sel");}
+
+/* ═══ INTERACTIONS ═══ */
+var seaParted=false,fireTransformed=false,hiraClicks=0,idolsBroken=0,scavFound={};
+function initInteractions(){
+  seaParted=false;fireTransformed=false;hiraClicks=0;idolsBroken=0;scavFound={};
+  initRainScene();initFireScene();initSeaScene();initHiraScene();initMarketScene();
+}
+
+function initRainScene(){
+  var canvas=document.getElementById("rcanvas");if(!canvas)return;
+  canvas.width=canvas.offsetWidth||320;canvas.height=canvas.offsetHeight||360;
+  var ctx=canvas.getContext("2d"),drops=[],wl=0,raining=false,fastFlood=false;
+  function addDrop(){drops.push({x:Math.random()*canvas.width,y:-10,sp:7+Math.random()*6,len:12+Math.random()*13,a:.3+Math.random()*.5});}
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(raining){
+      if(Math.random()<.32)addDrop();
+      drops.forEach(function(d,i){ctx.strokeStyle="rgba(150,200,255,"+d.a+")";ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(d.x,d.y);ctx.lineTo(d.x-2,d.y+d.len);ctx.stroke();d.y+=d.sp;if(d.y>canvas.height)drops.splice(i,1);});
+      if(wl<canvas.height*.58)wl+=(fastFlood?5:.18);
+      ctx.fillStyle="rgba(30,100,180,.38)";ctx.fillRect(0,canvas.height-wl,canvas.width,wl);
+      ctx.strokeStyle="rgba(80,160,220,.4)";ctx.lineWidth=1.5;ctx.beginPath();
+      for(var x=0;x<=canvas.width;x+=6)ctx.lineTo(x,canvas.height-wl+Math.sin(x*.04+Date.now()*.003)*6);
+      ctx.stroke();
+      var ark=document.getElementById("noahark");if(ark&&wl>55)ark.style.bottom=(28+wl/8)+"%";
+    }
+    activeAnimations.push(requestAnimationFrame(draw));
+  }
+  draw();
+  var sc=document.getElementById("noahscene");if(sc)sc.addEventListener("click",function(){raining=true;sc.style.background="linear-gradient(180deg,#0a1520,#050a18)";addTQ(5);});var arkEl=document.getElementById("noahark");if(arkEl)arkEl.addEventListener("click",function(ev){ev.stopPropagation();raining=true;fastFlood=true;if(sc)sc.style.background="linear-gradient(180deg,#0a1520,#050a18)";addTQ(5);});
+}
+
+function initFireScene(){
+  var sc=document.getElementById("firescene");if(!sc)return;
+  function transform(){
+    if(fireTransformed)return;fireTransformed=true;
+    var co=document.getElementById("cool-ov");if(co)co.style.opacity="1";
+    document.querySelectorAll(".fl").forEach(function(f){f.style.transition="all 1.8s";f.style.opacity=".22";f.style.filter="hue-rotate(200deg) saturate(.5)";});
+    var fw=document.getElementById("flowerslayer");
+    if(fw){fw.style.opacity="1";["🌸","🌺","🌼","💐","🌷","✿"].forEach(function(e,i){var d=document.createElement("div");d.style.cssText="position:absolute;font-size:1.4rem;opacity:0;transform:scale(0);transition:all "+(.7+i*.18)+"s "+i*.14+"s;left:"+(18+i*12)+"%;top:"+(25+((i%3)*15))+"%;";d.textContent=e;fw.appendChild(d);setTimeout(function(){d.style.opacity="1";d.style.transform="scale(1)";},60);});}
+    addTQ(5);
+  }
+  sc.addEventListener("touchmove",transform,{passive:true});sc.addEventListener("mousemove",transform);sc.addEventListener("click",transform);
+}
+
+function initSeaScene(){
+  var canvas=document.getElementById("scanvas");if(!canvas)return;
+  canvas.width=canvas.offsetWidth||320;canvas.height=canvas.offsetHeight||360;
+  var ctx=canvas.getContext("2d"),t=0,prog=0;
+  function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(!seaParted){for(var row=0;row<7;row++){var y=canvas.height*.28+row*27;ctx.fillStyle="rgba(20,70,140,"+(0.12+row*.038)+")";ctx.beginPath();for(var x=0;x<=canvas.width;x+=6)ctx.lineTo(x,y+Math.sin(x*.04+t*.05+row*.4)*7);ctx.lineTo(canvas.width,canvas.height);ctx.lineTo(0,canvas.height);ctx.closePath();ctx.fill();}}
+    else{if(prog<1)prog+=.012;var gap=canvas.width*.47*prog,cx=canvas.width/2;ctx.fillStyle="rgba(25,90,160,.7)";ctx.fillRect(0,0,cx-gap,canvas.height);for(var i=0;i<4;i++){ctx.fillStyle="rgba(255,200,60,.78)";ctx.beginPath();ctx.arc(18+i*11,80+i*38+Math.sin(t*.05+i)*9,4,0,Math.PI*2);ctx.fill();}ctx.fillStyle="rgba(25,90,160,.7)";ctx.fillRect(cx+gap,0,canvas.width-(cx+gap),canvas.height);for(var j=0;j<4;j++){ctx.fillStyle="rgba(255,200,60,.78)";ctx.beginPath();ctx.arc(canvas.width-18-j*11,90+j*34+Math.sin(t*.05+j+1)*9,4,0,Math.PI*2);ctx.fill();}var g=ctx.createLinearGradient(cx-gap,0,cx+gap,0);g.addColorStop(0,"rgba(56,189,248,.18)");g.addColorStop(.5,"rgba(56,189,248,.04)");g.addColorStop(1,"rgba(56,189,248,.18)");ctx.fillStyle=g;ctx.fillRect(cx-gap,0,gap*2,canvas.height);}
+    t++;activeAnimations.push(requestAnimationFrame(draw));
+  }
+  draw();
+  var stf=document.getElementById("staffbtn");if(stf)stf.addEventListener("click",function(){if(seaParted)return;seaParted=true;stf.style.animation="none";stf.style.filter="drop-shadow(0 0 55px rgba(56,189,248,1)) drop-shadow(0 0 80px rgba(251,191,36,.7))";var si=document.getElementById("seainstr");if(si)si.textContent="﴿فَانفَلَقَ فَكَانَ كُلُّ فِرْقٍ كَالطَّوْدِ الْعَظِيمِ﴾";var _armyico=document.getElementById("armyico");if(_armyico)_armyico.remove();addTQ(5);});
+}
+
+function initHiraScene(){
+  var sc=document.getElementById("hirascene");if(!sc)return;
+  sc.addEventListener("click",function(){
+    if(hiraClicks>=3)return;hiraClicks++;
+    var num=document.getElementById("hiranum");if(num)num.textContent=hiraClicks+"/3";
+    var iq=document.getElementById("iqratxt");
+    if(iq){iq.style.opacity="1";iq.style.fontSize=(2+hiraClicks*.45)+"rem";iq.style.textShadow="0 0 "+(25+hiraClicks*20)+"px rgba(251,191,36,.9)";}
+    if(hiraClicks===3){sc.style.background="radial-gradient(ellipse at 50% 40%,rgba(251,191,36,.22),rgba(2,12,30,.96))";addTQ(5);}
+  });
+}
+
+function initMarketScene(){
+  var canvas=document.getElementById("mktcanvas");var sc=document.getElementById("mktscene");if(!canvas||!sc)return;
+  canvas.width=canvas.offsetWidth||320;canvas.height=canvas.offsetHeight||360;
+  var ctx=canvas.getContext("2d"),particles=[];
+  sc.addEventListener("click",function(){for(var i=0;i<32;i++){var a=Math.random()*Math.PI*2,sp=1.5+Math.random()*2.8;particles.push({x:canvas.width/2,y:canvas.height/2,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r:2+Math.random()*3.5,a:1,color:"hsl("+(35+Math.random()*20)+",100%,"+(60+Math.random()*30)+"%)"});}addTQ(3);});
+  function anim(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(function(p){if(p.a<=0)return;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);var col=p.color.replace("hsl","hsla").replace(")","," +p.a+")");ctx.fillStyle=col;ctx.fill();p.x+=p.vx;p.y+=p.vy;p.a-=.016;p.r*=.99;});activeAnimations.push(requestAnimationFrame(anim));}
+  anim();
+}
+
+window.smashIdol=function(i){
+  var el=document.getElementById("idol"+i);if(!el||el.style.opacity==="0")return;
+  el.style.transition="all .3s";el.style.transform="scale(0) rotate(45deg)";el.style.opacity="0";idolsBroken++;
+  var cnt=document.getElementById("idolcnt");if(cnt){cnt.textContent="تحطّم: "+idolsBroken+" / 6";if(idolsBroken>=6){cnt.style.color="var(--emerald)";cnt.textContent="✅ تحطمت كل الأصنام!";addTQ(8);}}
+};
+
+window.foundScav=function(idOrEl){var id=typeof idOrEl==="string"?idOrEl:(idOrEl.dataset?idOrEl.dataset.sid:idOrEl);if(!id||scavFound[id])return;scavFound[id]=true;var el=document.getElementById(id);if(el)el.classList.add("found");addTQ(8);var cnt=document.getElementById("scavhud");if(cnt){var n=Object.keys(scavFound).length;cnt.textContent="ابحث عن الرموز: "+n+"/2 ✅"+( n>=2?"✅":"");}};
+
+window.healBird=function(){var b=document.getElementById("claybird");var m=document.getElementById("birdmsg");if(!b||b._healed)return;b._healed=true;b.style.transition="all 1.5s";b.style.filter="drop-shadow(0 0 20px rgba(192,132,252,.9))";b.style.transform="scale(1.3) translateY(-15px)";b.textContent="🕊";setTimeout(function(){b.style.transform="scale(1) translateY(-55px)";b.style.opacity="0";if(m)m.style.opacity="1";},1400);addTQ(5);};
+
+/* ═══ QUIZ HELPER ═══ */
+window.answerQ=function(el,correct){
+  if(el.parentNode.querySelector(".answered"))return;
+  el.classList.add(correct?"correct":"wrong");
+  el.classList.add("answered");
+  document.querySelectorAll(".qopt").forEach(function(o){o.classList.add("answered");});
+  if(correct){addTQ(10);sndCorrect();}else{sndWrong();}
+};
+
+function mkQ(q,opts,ans){
+  return '<div class="qwrap"><p class="qq">'+q+'</p><div class="qopts">'
+    +opts.map(function(o,i){return '<div class="qopt" onclick="answerQ(this,'+(i===ans)+')" style="animation-delay:'+(i*.08)+'s">'+o+'</div>';}).join("")
+    +"</div></div>";
+}
+
+/* ═══ PAGES DATA ═══ */
+function getPages(id){
+  var pMap={
+    noah:noahPg,ibrahim:ibrahimPg,moses:mosesPg,jesus:jesusPg,muhammad:muhammadPg,
+    adam:adamPg,yusuf:yusufPg,yunus:yuunusPg,dawud:dawudPg,sulaiman:sulaimanPg,
+    ayyub:ayyubPg,zakariya:zakariyaPg,yahya:yahyaPg,ismail:ismailPg,
+    lut:lutPg,hud:hudPg,saleh:salehPg,shuayb:shuaybPg,haroon:haroonPg,
+    idris:idrisPg,ilyas:ilyasPg,alyasa:alyasaPg,ishaq:ishaqPg,yaqub:yaqubPg,
+    dhulkifl:dhulkiflPg,
+    abu_bakr:abuBakrPg,omar:omarPg,uthman:uthmanPg,ali:aliPg,
+    khalid:khalidPg,amr:amrPg,ikrima:ikrimaPg,bilal:bilalPg,
+    ammar:ammarPg,musab:musabPg,sumayya:sumayyaPg,khadija:khadijaPg,
+    talha:talhaPg,zubayr:zubayrPg,abdulrahman:abdulrahmanPg,saad:saadPg,
+    abu_ubayda:abuUbaydaPg,khabbab:khabbabPg,abu_dharr:abuDharrPg,
+    saeed:saeedPg,
+  };
+  return pMap[id]?pMap[id]():defaultPg(id);
+}
+
+/* ─── PROPHETS ─── */
+function noahPg(){return[
+{visual:'<div class="noah-bg" id="noahscene"><div class="noah-sun"></div><div class="scav" id="sc1" style="top:14%;left:14%;--sfd:3.5s" onclick="event.stopPropagation();foundScav(this.dataset.sid)" data-sid="sc1">🕊</div><div class="scav" id="sc2" style="top:18%;right:12%;--sfd:4.2s;--sdd:.7s" onclick="event.stopPropagation();foundScav(this.dataset.sid)" data-sid="sc2">🌿</div><div class="shud" id="scavhud">ابحث عن الرموز: 0/2</div><canvas class="mc" id="rcanvas"></canvas><div id="noahark" style="position:absolute;bottom:28%;left:50%;transform:translateX(-50%);font-size:5.5rem;filter:drop-shadow(0 0 18px rgba(56,189,248,.5));cursor:pointer;transition:bottom .5s;animation:orbP 3s ease-in-out infinite">⛵</div><div style="position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(180deg,#c4962a,#8b6914)"></div></div>',hint:'اضغط لتبدأ الطوفان! وابحث عن الرموز المخفية!',verse:'﴿وَاصْنَعِ الْفُلْكَ بِأَعْيُنِنَا وَوَحْيِنَا﴾',text:'<strong>نوح عليه السلام</strong> دعا قومه 950 سنة. استهزأوا به وهو يبني السفينة في الصحراء بعيداً عن البحر. لكنه لم يتوقف لحظة واحدة! قيمته: <strong>الصبر مع الله لا يضيع أبداً.</strong>',vpill:'الصبر والتوكل'},
+{visual:'<div style="width:100%;height:100%;background:linear-gradient(180deg,#0a1520,#050a15);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden"><div style="font-size:5.5rem;animation:orbP 3s ease-in-out infinite;filter:drop-shadow(0 0 25px rgba(56,189,248,.6))">⛵</div><div style="position:absolute;top:22%;font-family:Amiri,serif;font-size:1.1rem;color:rgba(212,160,23,.9);text-align:center;padding:0 20px;text-shadow:0 0 14px rgba(212,160,23,.5)">وَاسْتَوَتْ عَلَى الْجُودِيِّ</div><div style="position:absolute;bottom:0;left:0;right:0;height:28%;background:linear-gradient(180deg,rgba(30,80,150,.3),rgba(20,60,120,.45))"></div></div>',verse:'﴿قِيلَ يَا نُوحُ اهْبِطْ بِسَلَامٍ مِّنَّا وَبَرَكَاتٍ﴾',text:'استقرت السفينة على جبل الجودي. نجا المؤمنون من الطوفان. <strong>وعد الله دائماً حق — من صبر وتوكل وصل إلى بر الأمان.</strong>'},
+{visual:'<div class="vpage">'+
+  '<div class="vic">⏳</div><div class="vtitle">قيمة الصبر مع الله</div>'+
+  '<p class="vdesc">نوح عليه السلام صبر 950 سنة! لم يتوقف يوماً واحداً رغم السخرية والأذى. الصبر الحقيقي هو أن تواصل فعل الخير حتى وإن لم يرَك أحد.</p>'+
+  '<div class="vhadith">عن أبي سعيد الخدري رضي الله عنه، أن النبي قال ﷺ: "وَمَا أُعْطِيَ أَحَدٌ عَطَاءً خَيْرًا وَأَوْسَعَ مِنَ الصَّبْرِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+
+  mkQ("ماذا فعل نوح حين سخر منه قومه ودعوه بالمجنون؟",["استمر في الدعوة والبناء واثقاً بالله","توقف عن الدعوة غضباً","هاجر وتركهم"],0)+
+  '</div>',text:''},
+];}
+
+function ibrahimPg(){return[
+{visual:'<div class="fire-bg" id="firescene"><div class="fwrap"><div class="fl fl1"></div><div class="fl fl2"></div><div class="fl fl3"></div><div class="fl fl4"></div><div class="fcenter"></div></div><div class="cool-ov" id="cool-ov" style="opacity:0;transition:opacity 1.8s"></div><div id="flowerslayer" style="position:absolute;inset:0;opacity:0;transition:opacity 1s;pointer-events:none"></div><div style="position:absolute;bottom:16%;font-size:.8rem;color:rgba(255,255,255,.6);text-align:center;padding:0 20px;animation:hblink 2s ease-in-out infinite">مرّر إصبعك أو اضغط لتحوّل النار برداً وسلاماً!</div></div>',hint:'مرّر إصبعك على النار!',verse:'﴿قُلْنَا يَا نَارُ كُونِي بَرْدًا وَسَلَامًا عَلَىٰ إِبْرَاهِيمَ﴾',text:'ألقاه النمرود في النار لأنه رفض عبادة الأصنام. لكن الله أمر النار: كوني برداً وسلاماً! تفتحت الزهور حوله. <strong>من يتوكل على الله لا تضره نار الدنيا.</strong>'},
+{visual:'<div style="width:100%;height:100%;background:linear-gradient(180deg,#0a0515,#05030e);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden"><div style="display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:50px;z-index:5;width:90%"><div style="font-size:2.8rem;filter:drop-shadow(0 0 14px rgba(251,191,36,.6))">🔨</div><div style="font-family:Amiri,serif;font-size:.9rem;color:rgba(212,160,23,.8);text-align:center;margin-bottom:5px">اضغط على كل صنم لتحطيمه!</div><div style="display:flex;gap:9px;flex-wrap:wrap;justify-content:center;max-width:250px">'
+  +Array.from({length:6},function(_,i){return '<div id="idol'+i+'" onclick="smashIdol('+i+')" style="width:36px;height:52px;background:linear-gradient(180deg,#8b7355,#5a4825);border-radius:3px 3px 0 0;cursor:pointer;position:relative;transition:all .3s;box-shadow:0 4px 8px rgba(0,0,0,.5)"><div style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:16px;height:16px;background:#8b7355;border-radius:50%"></div></div>';}).join("")
+  +'</div><div id="idolcnt" style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.22);border-radius:12px;padding:4px 14px;color:var(--emerald);font-size:.78rem">تحطّم: 0 / 6</div></div></div>',hint:'اضغط على الأصنام الستة لتحطيمها!',text:'قال إبراهيم لأبيه: لماذا تعبد ما لا يسمع ولا يبصر؟ ثم حطّم الأصنام كلها. هذا هو <strong>اليقين بالله: لا خوف من غيره.</strong>'},
+{visual:'<div class="kaaba-bg"><div style="position:absolute;border-radius:50%;border:1px solid rgba(212,160,23,.12);width:200px;height:200px;animation:spin 12s linear infinite"><div style="position:absolute;top:-4px;left:50%;margin-left:-4px;width:8px;height:8px;border-radius:50%;background:rgba(212,160,23,.7)"></div></div><div style="position:absolute;border-radius:50%;border:1px solid rgba(212,160,23,.07);width:275px;height:275px;animation:spin 18s linear infinite"><div style="position:absolute;top:-4px;left:50%;margin-left:-4px;width:7px;height:7px;border-radius:50%;background:rgba(56,189,248,.5)"></div></div><div style="position:relative;z-index:5;width:115px;height:125px;background:linear-gradient(145deg,#131313,#080808);border:2px solid rgba(212,160,23,.25);border-radius:3px;box-shadow:0 0 30px rgba(0,0,0,.9)"><div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.9),rgba(5,5,5,.95));border-radius:2px"></div><div style="position:absolute;top:28px;left:0;right:0;height:20px;background:linear-gradient(90deg,rgba(212,160,23,.6),rgba(212,160,23,.95),rgba(212,160,23,.6));display:flex;align-items:center;justify-content:center;font-family:Amiri,serif;font-size:.5rem;color:rgba(2,12,30,.9);letter-spacing:.7px">لَا إِلَهَ إِلَّا اللَّهُ مُحَمَّدٌ رَسُولُ اللَّهِ</div><div style="position:absolute;bottom:0;right:25px;width:30px;height:46px;background:linear-gradient(180deg,rgba(212,160,23,.82),rgba(150,110,15,.6));border-radius:2px 2px 0 0"></div></div></div>',verse:'﴿وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ﴾',text:'بنى إبراهيم مع ابنه إسماعيل الكعبة المشرفة. قال: "ربنا تقبّل منا". حتى اليوم يتجه إليها أكثر من مليار مسلم في كل صلاة.'},
+{visual:'<div class="vpage"><div class="vic">🌟</div><div class="vtitle">قيمة اليقين بالله</div><p class="vdesc">اليقين هو أن تتصرف كأن الله ينصرك قبل أن ترى النتيجة. دخل إبراهيم النار يقيناً بأن الله معه — فكانت عليه برداً وسلاماً!</p><div class="vhadith">﴿حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ﴾ — قالها إبراهيم حين أُلقي في النار</div>'+mkQ("ما سر قوة إبراهيم أمام النار الضخمة؟",["يقينه التام بأن الله يحميه","كان يرتدي ثياباً خاصة","النار كانت صغيرة"],0)+'</div>',text:''},
+];}
+
+function mosesPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,#051520,#020818);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:3rem;animation:orbP 2s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(52,211,153,.8))">🌿</div><div style="font-family:Amiri,serif;font-size:1rem;color:var(--emerald);text-shadow:0 0 16px rgba(52,211,153,.6);margin:8px 0">وَادِي طُوَى الْمُقَدَّس</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:10px 16px;font-family:Amiri,serif;font-size:.88rem;color:rgba(52,211,153,.88);line-height:1.9;max-width:270px">إِنَّنِي أَنَا اللَّهُ لَا إِلَٰهَ إِلَّا أَنَا فَاعْبُدْنِي</div></div></div>',verse:'﴿إِنِّي أَنَا رَبُّكَ فَاخْلَعْ نَعْلَيْكَ ۖ إِنَّكَ بِالْوَادِ الْمُقَدَّسِ طُوًى﴾',text:'في وادي طوى ناداه الله من شجرة مباركة. كان يبحث عن جمرة للدفء فوجد نورَ الأكوان. <strong>أحياناً في رحلة بسيطة تقابل أعظم لحظات الحياة.</strong>'},
+{visual:'<div class="sea-bg" id="mktscene" style="position:relative"><canvas class="mc" id="scanvas"></canvas><div id="armyico" style="position:absolute;top:14%;right:8%;font-size:1.3rem;opacity:.7;animation:sunb .5s ease-in-out infinite">⚔️🐴⚔️</div><div id="staffbtn" style="position:absolute;bottom:33%;left:50%;transform:translateX(-50%);font-size:3.5rem;filter:drop-shadow(0 0 16px rgba(56,189,248,.8));cursor:pointer;animation:fcg 2s ease-in-out infinite;z-index:10">🪄</div><div id="seainstr" style="position:absolute;bottom:15%;font-size:.78rem;color:rgba(56,189,248,.78);text-align:center;padding:0 20px;animation:hblink 2s ease-in-out infinite;z-index:10">اضغط على العصا لتشق البحر!</div></div>',hint:'اضغط على العصا المضيئة!',verse:'﴿فَأَوْحَيْنَا إِلَىٰ مُوسَىٰ أَنِ اضْرِب بِّعَصَاكَ الْبَحْرَ فَانفَلَقَ﴾',text:'البحر أمامهم والجيش خلفهم. صرخ قومه: أُدركنا! فقال موسى: <strong>"كَلَّا إِنَّ مَعِيَ رَبِّي سَيَهْدِينِ"</strong>. هذه هي الشجاعة: أن تثق بالله حين لا يثق بك أحد.'},
+{visual:'<div style="width:100%;height:100%;background:linear-gradient(180deg,#150208,#080104);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="display:flex;flex-direction:column;gap:12px;max-width:295px;z-index:5"><div style="text-align:center;font-size:3rem">👑</div><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:10px;padding:12px;text-align:center"><div style="font-family:Amiri,serif;color:#f87171;font-size:.88rem;margin-bottom:4px">فرعون يقول:</div><div style="color:rgba(255,255,255,.78);font-size:.86rem;font-style:italic">"أَنَا رَبُّكُمُ الْأَعْلَىٰ"</div></div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:12px;text-align:center"><div style="font-family:Amiri,serif;color:var(--emerald);font-size:.88rem;margin-bottom:4px">موسى يرد بلا خوف:</div><div style="color:rgba(255,255,255,.78);font-size:.86rem">"رَبُّنَا الَّذِي أَعْطَىٰ كُلَّ شَيْءٍ خَلْقَهُ ثُمَّ هَدَىٰ"</div></div><div style="font-size:.8rem;color:var(--text2);text-align:center">الشجاعة: قول الحق للظالم ولو كلّفك كل شيء</div></div></div>',text:'وقف موسى أمام أقوى ملك في عصره يدعوه بكل شجاعة. <strong>الإيمان يجعل الإنسان أقوى من الجبابرة.</strong>'},
+{visual:'<div class="vpage"><div class="vic">💪</div><div class="vtitle">قيمة الشجاعة والثبات</div><p class="vdesc">الشجاعة الحقيقية ليست غياب الخوف — بل أن تمضي رغم الخوف ثقة بالله. موسى قال "إن معي ربي" أمام البحر والجيش معاً!</p><div class="vhadith">﴿وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ﴾</div>'+mkQ("كيف تصرف موسى حين حاصره البحر وفرعون وجيشه؟",["قال: إن معي ربي وثبت على إيمانه","فكّر في الاستسلام","طلب من فرعون الصلح"],0)+'</div>',text:''},
+];}
+
+function jesusPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 35%,#0a1020,#020c1e);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:5rem;filter:drop-shadow(0 0 24px rgba(192,132,252,.7));animation:float 3s ease-in-out infinite;margin-bottom:12px">👶</div><div style="background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.18);border-radius:14px;padding:16px;max-width:285px;margin:0 auto"><div style="font-family:Amiri,serif;font-size:.9rem;color:#c084fc;margin-bottom:7px">المهد المبارك</div><div style="background:rgba(0,0,0,.2);border-radius:8px;padding:10px;font-family:Amiri,serif;font-size:.88rem;color:rgba(255,255,255,.88);line-height:1.95">﴿إِنِّي عَبْدُ اللَّهِ آتَانِيَ الْكِتَابَ وَجَعَلَنِي نَبِيًّا﴾</div><div style="font-size:.72rem;color:var(--text2);margin-top:7px">تكلّم وهو رضيع — معجزة لم تتكرر</div></div></div></div>',verse:'﴿وَيُكَلِّمُ النَّاسَ فِي الْمَهْدِ وَكَهْلًا وَمِنَ الصَّالِحِينَ﴾',text:'<strong>عيسى عليه السلام</strong> — ولد بلا أب بإذن الله. تكلّم في المهد دفاعاً عن أمه الطاهرة مريم. كل معجزاته تقول: الله على كل شيء قدير.'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#080515,#020818);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;overflow:hidden" onclick="healBird()"><div style="display:flex;flex-direction:column;align-items:center;gap:15px;z-index:5;padding-top:50px"><div id="claybird" style="font-size:5rem;transition:all 1.5s;filter:grayscale(1) drop-shadow(0 0 5px rgba(192,132,252,.18))">🐦</div><div style="background:rgba(192,132,252,.07);border:1px solid rgba(192,132,252,.18);border-radius:9px;padding:9px 16px;animation:hblink 2s ease-in-out infinite"><div style="font-size:.8rem;color:#c084fc;text-align:center">اضغط لترى معجزة طير الطين!</div></div><div id="birdmsg" style="font-family:Amiri,serif;font-size:.92rem;color:rgba(255,255,255,.7);opacity:0;transition:opacity 1s;text-align:center;max-width:255px">بإذن الله... طار الطير وسبّح ربه!</div></div></div>',hint:'اضغط لترى طير الطين يحيا بإذن الله!',verse:'﴿وَإِذْ تَخْلُقُ مِنَ الطِّينِ كَهَيْئَةِ الطَّيْرِ بِإِذْنِي فَتَنفُخُ فِيهَا فَتَكُونُ طَيْرًا بِإِذْنِي﴾',text:'كان يصنع من الطين طيراً وينفخ فيه فيطير بإذن الله. <strong>كل معجزة تشير لله وحده — النبي مجرد وسيلة والفاعل هو الله.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🕊</div><div class="vtitle">قيمة الرحمة والإحسان</div><p class="vdesc">كان عيسى عليه السلام يمشي في الأسواق يشفي المرضى ويرحم الفقراء. الرحمة الحقيقية تتعب قدمَيك وتريح قلبك.</p><div class="vhadith">عن عبدالله بن عمرو رضي الله عنهما، أنه قال ﷺ: "الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ، ارْحَمُوا مَنْ فِي الْأَرْضِ يَرْحَمْكُمْ مَنْ فِي السَّمَاءِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه أبو داود والترمذي وصححه الألباني)</span></div>'+mkQ("ما الذي يجعل الرحمة قيمة عظيمة؟",["لأن الله يرحم الراحمين فتعود إليهم","لأنها تجعلك مشهوراً","لأنها سهلة"],0)+'</div>',text:''},
+];}
+
+function muhammadPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#100800,#050400);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(212,160,23,.07),transparent)"></div><div style="text-align:center;z-index:5"><div style="font-size:3rem;filter:drop-shadow(0 0 18px rgba(212,160,23,.7));animation:orbP 3s ease-in-out infinite;margin-bottom:10px">🌙</div><div style="font-family:Amiri,serif;font-size:1.8rem;color:var(--gold);text-shadow:0 0 24px rgba(251,191,36,.5);margin-bottom:4px">مُحَمَّد ﷺ</div><div style="color:rgba(212,160,23,.62);font-size:.8rem;margin-bottom:16px">الصادق الأمين — رحمة للعالمين</div><div style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap">'
+  +[["👶","يتيم النشأة","قوته من الله"],["🤝","الأمين","يُعرف بالصدق"],["❤","الرحيم","بالكبير والصغير"]].map(function(x){return '<div style="background:rgba(212,160,23,.06);border:1px solid rgba(212,160,23,.14);border-radius:9px;padding:9px;width:82px;text-align:center"><div style="font-size:1.3rem;margin-bottom:4px">'+x[0]+'</div><div style="font-size:.68rem;color:var(--gold);font-weight:700;margin-bottom:2px">'+x[1]+'</div><div style="font-size:.6rem;color:var(--text2)">'+x[2]+'</div></div>';}).join("")
+  +'</div></div></div>',verse:'﴿وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِّلْعَالَمِينَ﴾',text:'<strong>محمد ﷺ</strong> ولد يتيماً ونشأ فقيراً. لكن قومه لقّبوه "الصادق الأمين" قبل النبوة بسنوات. أخلاقه كانت أعظم شاهد على صدق رسالته.'},
+{visual:'<div class="hira-bg" id="hirascene"><div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:195px;height:215px;background:linear-gradient(180deg,#1a1005,#0a0803);clip-path:polygon(50% 0%,100% 100%,0% 100%);filter:drop-shadow(0 0 14px rgba(212,160,23,.1))"></div><div style="position:absolute;bottom:26%;left:50%;transform:translateX(-50%);width:52px;height:58px;background:radial-gradient(ellipse,rgba(251,191,36,.22),rgba(50,20,0,.28));border-radius:50%;box-shadow:0 0 22px rgba(251,191,36,.12)"></div><div id="iqratxt" style="position:absolute;font-family:Amiri,serif;font-size:0;color:var(--gold);text-shadow:0 0 28px rgba(251,191,36,.85);opacity:0;top:20%;left:50%;transform:translateX(-50%);white-space:normal;max-width:90%;word-break:break-word;transition:all .5s;pointer-events:none">اقرأ</div><div id="hiranum" style="position:absolute;top:14%;right:13px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.22);border-radius:12px;padding:3px 10px;font-size:.7rem;color:var(--gold)">0/3</div></div>',hint:'اضغط على الكهف ثلاث مرات!',verse:'﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾',text:'في غار حراء كانت الليلة التي غيّرت التاريخ. نزل جبريل وقال: "اقرأ". ثلاث مرات حتى نزل أول وحي في الإسلام. <strong>العلم والقراءة هما سلاح الأنبياء والعظماء.</strong>'},
+{visual:'<div style="width:100%;height:100%;background:linear-gradient(180deg,#1a0e00,#0a0600);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer" id="mktscene"><canvas class="mc" id="mktcanvas"></canvas><div style="width:85px;height:85px;background:radial-gradient(circle,rgba(255,235,120,.95),rgba(251,191,36,.6),transparent);border-radius:50%;box-shadow:0 0 55px 22px rgba(251,191,36,.48);animation:orbP 2.5s ease-in-out infinite;z-index:5;position:relative"></div><div style="position:absolute;bottom:17%;font-size:.78rem;color:rgba(212,160,23,.62);text-align:center;padding:0 18px;animation:hblink 2s ease-in-out infinite;z-index:10">اضغط لترى كيف كان النبي ﷺ نوراً في السوق!</div></div>',hint:'اضغط لترى انتشار النور!',text:'في سوق مكة كان كل من يقترب منه ﷺ يحسّ بالطمأنينة والمحبة. حتى أعداؤه كانوا يضعون أماناتهم عنده! <strong>حسن الخلق لا يحتاج إلى ترويج — الناس يحسّونه تلقائياً.</strong>'},
+{visual:'<div class="vpage"><div class="vic">💍</div><div class="vtitle">قيمة الأمانة والصدق</div><p class="vdesc">الأمانة هي أن تُسلَّم إليك مسؤولية فتؤديها كاملة حتى لو كان أصحابها أعداءك. هذا ما فعله النبي ﷺ طوال حياته.</p><div class="vhadith">عن أنس بن مالك رضي الله عنه، أن النبي قال ﷺ: "لَا إِيمَانَ لِمَنْ لَا أَمَانَةَ لَهُ، وَلَا دِينَ لِمَنْ لَا عَهْدَ لَهُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه أحمد)</span></div>'+mkQ("لماذا كان أعداء النبي ﷺ يضعون أماناتهم عنده؟",["لأنهم وثقوا بأمانته وصدقه","لأنه كان القوي في مكة","لأن بيته كبير"],0)+'</div>',text:''},
+];}
+
+function adamPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#062010,#020c05);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4.5rem;margin-bottom:14px;animation:float 3s ease-in-out infinite">🌿</div><div style="font-family:Amiri,serif;font-size:1.4rem;color:var(--emerald);margin-bottom:12px;text-shadow:0 0 18px rgba(52,211,153,.4)">آدم — أبو البشرية</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:12px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.88rem;color:rgba(52,211,153,.85);line-height:1.95;text-align:center">وَعَلَّمَ آدَمَ الْأَسْمَاءَ كُلَّهَا — منحه الله العلم</div></div></div>',verse:'﴿وَإِذْ قُلْنَا لِلْمَلَائِكَةِ اسْجُدُوا لِآدَمَ فَسَجَدُوا﴾',text:'<strong>آدم عليه السلام</strong> أول إنسان خلقه الله. علّمه الله أسماء كل شيء. أكل من الشجرة فعصى، ثم ندم وتاب. <strong>الفرق بين الإنسان والشيطان: الإنسان يتوب!</strong>'},
+{visual:'<div class="vpage"><div class="vic">💚</div><div class="vtitle">قيمة التوبة والعودة إلى الله</div><p class="vdesc">آدم أخطأ ولكنه لم ييأس. قال: "ربنا ظلمنا أنفسنا وإن لم تغفر لنا وترحمنا لنكونن من الخاسرين." التوبة دليل قوة لا ضعف!</p><div class="vhadith">عن أنس بن مالك رضي الله عنه، أنه قال ﷺ: "كُلُّ بَنِي آدَمَ خَطَّاءٌ وَخَيْرُ الْخَطَّائِينَ التَّوَّابُونَ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي وابن ماجه)</span></div>'+mkQ("ما الذي ميّز آدم حين أخطأ؟",["تاب فوراً وطلب المغفرة","أصرّ على خطئه","أشار بالخطأ على غيره"],0)+'</div>',text:''},
+];}
+
+function yusufPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1000,#080400);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(251,191,36,.6))">👑</div><div style="display:flex;flex-direction:column;gap:10px;max-width:285px"><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#f87171">إخوته رموه في الجب 😔</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">الله جعله وزيراً لمصر 👑</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--emerald)">قال لإخوته: لا توبيخ عليكم اليوم ❤</div></div></div></div>',verse:'﴿قَالَ لَا تَثْرِيبَ عَلَيْكُمُ الْيَوْمَ يَغْفِرُ اللَّهُ لَكُمْ﴾',text:'<strong>يوسف عليه السلام</strong> رماه إخوته في البئر وباعوه عبداً، وسجن ظلماً. ثم صار وزيراً لمصر. حين قدر على إخوته قال: <strong>"لا تثريب عليكم اليوم"</strong>. العفو من أعظم القيم.'},
+{visual:'<div class="vpage"><div class="vic">🌹</div><div class="vtitle">قيمة العفو والصبر الجميل</div><p class="vdesc">الصبر الجميل هو الصبر بلا شكوى. العفو هو أن تقدر وتصفح. يوسف قدر على إخوته فعفا عنهم. هذا هو معنى العظمة الحقيقية.</p><div class="vhadith">﴿فَصَبْرٌ جَمِيلٌ وَاللَّهُ الْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ﴾</div>'+mkQ("ماذا فعل يوسف حين تمكّن من الانتقام من إخوته؟",["عفا عنهم وطلب لهم المغفرة","أخذ بثأره منهم","أرسلهم إلى السجن"],0)+'</div>',text:''},
+];}
+
+function yuunusPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 60%,#001525,#000810);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:5rem;margin-bottom:12px;animation:float 3s ease-in-out infinite">🐋</div><div style="font-family:Amiri,serif;font-size:1rem;color:var(--blue);margin-bottom:10px;text-shadow:0 0 16px rgba(56,189,248,.5)">بطن الحوت — ظلمات فوق ظلمات</div><div style="background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);border-radius:12px;padding:14px;max-width:275px;font-family:Amiri,serif;font-size:.92rem;color:rgba(56,189,248,.88);line-height:2;text-align:center">سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ</div></div></div>',verse:'﴿فَنَادَىٰ فِي الظُّلُمَاتِ أَن لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ﴾',text:'<strong>يونس عليه السلام</strong> خرج مغاضباً لقومه دون أن يأذن الله له. التقمه الحوت في الظلمات. لم ييأس — ناجى ربه فأنجاه الله. <strong>مهما بلغ الظلام تبقى كلمة "لا إله إلا أنت" منارة</strong>.'},
+{visual:'<div class="vpage"><div class="vic">💚</div><div class="vtitle">قيمة التوبة والرجوع إلى الله</div><p class="vdesc">يونس في بطن الحوت لم يلُم أحداً ولم يطلب المستحيل — قال: "سبحانك إني كنت من الظالمين". هذا هو سر قبول التوبة: الاعتراف الصادق.</p><div class="vhadith">﴿فَاسْتَجَبْنَا لَهُ وَنَجَّيْنَاهُ مِنَ الْغَمِّ وَكَذَٰلِكَ نُنجِي الْمُؤْمِنِينَ﴾</div>'+mkQ("ما الدعاء الذي نجّى يونس من بطن الحوت؟",["لا إله إلا أنت سبحانك إني كنت من الظالمين","ربنا آتنا في الدنيا حسنة","حسبنا الله ونعم الوكيل"],0)+'</div>',text:''},
+];}
+
+function dawudPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#100820,#050410);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 2.5s ease-in-out infinite;filter:drop-shadow(0 0 16px rgba(167,139,250,.6))">🎵</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--purple);margin-bottom:12px">داود — النبي الملك المسبّح</div><div style="display:flex;gap:10px;justify-content:center"><div style="background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.18);border-radius:10px;padding:10px;max-width:130px;text-align:center;font-size:.78rem;color:rgba(167,139,250,.82)">🏹 قتل جالوت بحجر صغير</div><div style="background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.18);border-radius:10px;padding:10px;max-width:130px;text-align:center;font-size:.78rem;color:rgba(167,139,250,.82)">📖 أُنزل عليه الزبور</div></div></div></div>',verse:'﴿وَسَخَّرْنَا مَعَ دَاوُودَ الْجِبَالَ يُسَبِّحْنَ وَالطَّيْرَ﴾',text:'<strong>داود عليه السلام</strong> — صغير الجسد قوي الإيمان. قتل الجبار جالوت بحجر من مقلاعه. صار ملكاً ونبياً. كانت الجبال والطيور تسبّح معه. <strong>الإيمان يضخّم الصغير ويُصغّر العملاق.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🎵</div><div class="vtitle">قيمة الحكمة والشكر</div><p class="vdesc">داود لم يغتر بالنصر. ظل طول حياته يذكر الله ويشكره. الشكر هو أن تعرف أن نعمك من الله لا من نفسك.</p><div class="vhadith">﴿اعْمَلُوا آلَ دَاوُودَ شُكْرًا وَقَلِيلٌ مِّنْ عِبَادِيَ الشَّكُورُ﴾</div>'+mkQ("بماذا قتل داود الجبار جالوت؟",["بحجر صغير من مقلاعه ثقةً بالله","بسيف ثقيل من ذهب","بجيش ضخم"],0)+'</div>',text:''},
+];}
+
+function sulaimanPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1200,#080600);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 2.5s ease-in-out infinite">🦅</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--gold);margin-bottom:12px">سليمان — الملك النبي</div><div style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap">'
+  +[["🐜","يفهم كلام النمل"],["💨","يسخّر الريح"],["🏰","بنى الهيكل العظيم"]].map(function(x){return '<div style="background:rgba(212,160,23,.07);border:1px solid rgba(212,160,23,.14);border-radius:9px;padding:9px;width:85px;text-align:center;font-size:.72rem;color:var(--gold)">'+x[0]+'<br>'+x[1]+'</div>';}).join("")
+  +'</div></div></div>',verse:'﴿رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ﴾',text:'<strong>سليمان عليه السلام</strong> — أُعطي ملكاً لم يُؤتَه أحد. يسمع كلام النمل والطير. لكن أول ما طلب من الله: <strong>"أَوزِعني أن أشكر نعمتك"</strong>. هذا هو التواضع الحقيقي.'},
+{visual:'<div class="vpage"><div class="vic">🌹</div><div class="vtitle">قيمة الشكر والتواضع</div><p class="vdesc">سليمان أقوى ملك في التاريخ ومع ذلك أول دعائه كان "أَوزِعني أن أشكر نعمتك". الشكر يحفظ النعمة والتواضع يحفظ القدر.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال ﷺ: "مَنْ لَمْ يَشْكُرِ النَّاسَ لَمْ يَشْكُرِ اللَّهَ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه أبو داود والترمذي)</span></div>'+mkQ("ماذا طلب سليمان من الله حين أُعطي الملك العظيم؟",["طلب أن يوفقه لشكر النعمة","طلب المزيد من القوة","طلب هزيمة الأعداء"],0)+'</div>',text:''},
+];}
+
+function ayyubPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#101520,#050a15);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite">💎</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:var(--blue);margin-bottom:12px">أيوب — بطل الصبر</div><div style="display:flex;flex-direction:column;gap:8px;max-width:270px"><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.15);border-radius:9px;padding:9px;text-align:center;font-size:.8rem;color:#f87171">18 عاماً من المرض الشديد</div><div style="background:rgba(96,165,250,.07);border:1px solid rgba(96,165,250,.15);border-radius:9px;padding:9px;text-align:center;font-size:.8rem;color:#60a5fa">لم يتذمّر ولم يكفر بنعمة الله</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.15);border-radius:9px;padding:9px;text-align:center;font-size:.8rem;color:var(--emerald)">الله شفاه وضاعف ما كان له</div></div></div></div>',verse:'﴿أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ﴾',text:'<strong>أيوب عليه السلام</strong> أصيب بالمرض 18 عاماً. فقد ماله وولده وصحته. لم يقل إلا: "ربي مسّني الضر وأنت أرحم الراحمين." <strong>الصبر على البلاء من أعظم العبادات.</strong>'},
+{visual:'<div class="vpage"><div class="vic">💎</div><div class="vtitle">قيمة الصبر على البلاء</div><p class="vdesc">أيوب لم يصبر صبر اليائس — بل صبر وهو يثق بأن الله سيرفع البلاء. الصبر الحقيقي هو الاطمئنان لقضاء الله.</p><div class="vhadith">عن أنس بن مالك رضي الله عنه، أنه قال ﷺ: "إِنَّ عِظَمَ الجَزَاءِ مَعَ عِظَمِ البَلَاءِ، وَإِنَّ اللَّهَ إِذَا أَحَبَّ قَوْمًا ابْتَلَاهُمْ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي وصححه الألباني)</span></div>'+mkQ("كم سنة صبر أيوب على المرض الشديد؟",["18 عاماً بثقة تامة بالله","3 أيام","يوماً واحداً"],0)+'</div>',text:''},
+];}
+
+function zakariyaPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0d0818,#040310);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(244,114,182,.6))">🌸</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:#f472b6;margin-bottom:12px">زكريا — الداعي الصابر</div><div style="background:rgba(244,114,182,.07);border:1px solid rgba(244,114,182,.18);border-radius:12px;padding:14px;max-width:275px;font-family:Amiri,serif;font-size:.9rem;color:rgba(244,114,182,.88);line-height:1.95;text-align:center">رَبِّ لَا تَذَرْنِي فَرْدًا وَأَنتَ خَيْرُ الْوَارِثِينَ</div></div></div>',verse:'﴿إِذْ نَادَىٰ رَبَّهُ نِدَاءً خَفِيًّا﴾',text:'<strong>زكريا عليه السلام</strong> بلغ الكبر ولم يرزق بولد. لكنه لم يتوقف عن الدعاء سراً. ناجى ربه بصوت خفيّ. فأعطاه الله يحيى في شيخوخته. <strong>الدعاء الخفيّ له قوة خاصة — ما بين العبد وربه.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🌸</div><div class="vtitle">قيمة الدعاء واليقين</div><p class="vdesc">زكريا لم يستسلم للعقر والكبر — آمن بأن الله قادر. والله فعلاً قادر. الدعاء ليس طلب المستحيل — الدعاء ثقة بأن الله لا يستحيل عليه شيء.</p><div class="vhadith">عن النعمان بن بشير رضي الله عنه، أن النبي قال ﷺ: "الدُّعَاءُ هُوَ الْعِبَادَةُ، ثُمَّ قَرَأَ: ﴿ادْعُونِي أَسْتَجِبْ لَكُمْ﴾"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه أبو داود والترمذي)</span></div>'+mkQ("ماذا طلب زكريا من الله وهو شيخ كبير وزوجته عاقر؟",["طلب ولداً يرثه ويكمل الدعوة","طلب المال","طلب الصحة فقط"],0)+'</div>',text:''},
+];}
+
+function yahyaPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#041510,#020808);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite">🌱</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:var(--emerald);margin-bottom:12px">يحيى — النبي الصغير الزاهد</div><div style="display:flex;gap:9px;justify-content:center;flex-wrap:wrap">'
+  +[["🌿","يأكل من نبات الأرض"],["💧","يبكي خشية الله"],["📖","أُعطي الحكم صبياً"]].map(function(x){return '<div style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.15);border-radius:9px;padding:9px;max-width:85px;text-align:center;font-size:.72rem;color:var(--emerald)">'+x[0]+'<br>'+x[1]+'</div>';}).join("")
+  +'</div></div></div>',verse:'﴿وَآتَيْنَاهُ الْحُكْمَ صَبِيًّا﴾',text:'<strong>يحيى عليه السلام</strong> أُعطي الحكم وهو طفل صغير. عاش زاهداً يأكل من العشب ويلبس الشعر. كان كثير البكاء من خشية الله. <strong>الزهد حرية من قيود الدنيا.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🌱</div><div class="vtitle">قيمة الزهد والنقاء</div><p class="vdesc">الزهد لا يعني الفقر — بل أن لا تستعبدك الدنيا. يحيى كان يملك كل شيء لكنه اختار البساطة ليكون قلبه حراً لله وحده.</p><div class="vhadith">عن سهل بن سعد رضي الله عنه، أن رجلاً جاء فقال يا رسول الله دلني على عمل ... قال ﷺ: "ازْهَدْ فِي الدُّنْيَا يُحِبَّكَ اللَّهُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه ابن ماجه وصححه الألباني)</span></div>'+mkQ("متى أُعطي يحيى الحكم والنبوة؟",["وهو صبي صغير بإذن الله","حين بلغ الأربعين","بعد رحلة طويلة"],0)+'</div>',text:''},
+];}
+
+function ismailPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1000,#080500);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite">🐏</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:var(--gold);margin-bottom:12px">إسماعيل — الذبيح الصابر</div><div style="background:rgba(212,160,23,.07);border:1px solid rgba(212,160,23,.18);border-radius:12px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.9rem;color:rgba(212,160,23,.88);line-height:1.95;text-align:center">قَالَ يَا أَبَتِ افْعَلْ مَا تُؤْمَرُ سَتَجِدُنِي إِن شَاءَ اللَّهُ مِنَ الصَّابِرِينَ</div></div></div>',verse:'﴿فَلَمَّا أَسْلَمَا وَتَلَّهُ لِلْجَبِينِ ۚ وَنَادَيْنَاهُ أَن يَا إِبْرَاهِيمُ﴾',text:'<strong>إسماعيل عليه السلام</strong> حين أخبره أبوه بالرؤية قال بكل ثقة: "افعل ما تُؤمر ستجدني من الصابرين." لم يبكِ ولم يهرب. <strong>الطاعة الكاملة تحتاج إيماناً عميقاً جداً.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🐏</div><div class="vtitle">قيمة الطاعة والفداء</div><p class="vdesc">إسماعيل لم يُجبَر — اختار الطاعة بنفسه. قال: "ستجدني من الصابرين." هذه الطاعة الواثقة هي ما يُخلّد اسمه إلى يوم القيامة.</p><div class="vhadith">﴿إِنَّ هَٰذَا لَهُوَ الْبَلَاءُ الْمُبِينُ ۚ وَفَدَيْنَاهُ بِذِبْحٍ عَظِيمٍ﴾</div>'+mkQ("ماذا قال إسماعيل لأبيه حين أخبره بأمر الله بالذبح؟",["ستجدني إن شاء الله من الصابرين","رفض وهرب","طلب البحث عن بديل"],0)+'</div>',text:''},
+];}
+
+/* ─── SAHABA ─── */
+function facelessSVG(color1,color2,angle,hasStaff,hasShield,hasSword){
+  var c1=color1||"#3a3a4a",c2=color2||"#252535";
+  return '<svg width="95" height="220" viewBox="0 0 95 220" style="z-index:5">'
+    +'<defs><linearGradient id="fg'+Date.now()%999+'" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="'+c1+'"/><stop offset="100%" stop-color="'+c2+'"/></linearGradient></defs>'
+    +'<ellipse cx="47" cy="180" rx="30" ry="42" fill="'+c1+'" opacity=".88"/>'
+    +'<rect x="20" y="95" width="55" height="90" rx="7" fill="'+c1+'" opacity=".9" transform="rotate('+(angle||0)+' 47 140)"/>'
+    +'<ellipse cx="47" cy="92" rx="32" ry="13" fill="'+c2+'" opacity=".8"/>'
+    +'<ellipse cx="47" cy="63" rx="20" ry="24" fill="'+c2+'" opacity=".88"/>'
+    +(hasStaff?'<line x1="80" y1="55" x2="84" y2="222" stroke="#7a6030" stroke-width="5" stroke-linecap="round"/><ellipse cx="82" cy="53" rx="6" ry="6" fill="#5a4020" opacity=".8"/>':'')
+    +(hasShield?'<ellipse cx="78" cy="130" rx="20" ry="26" fill="'+c1+'" opacity=".7" transform="rotate(-15 78 130)"/><ellipse cx="78" cy="130" rx="16" ry="22" fill="none" stroke="rgba(56,189,248,.38)" stroke-width="2" transform="rotate(-15 78 130)"/>':'')
+    +(hasSword?'<rect x="14" y="100" width="6" height="70" rx="3" fill="#8a9ab0" opacity=".7" transform="rotate(15 17 135)"/>':'')
+    +'</svg>';
+}
+
+function sahaba_scene(bg,auraColor,svgArgs,label){
+  return '<div class="fs-scene" style="background:'+bg+'">'
+    +'<div class="aura" style="width:200px;height:200px;top:10%;left:50%;margin-left:-100px;background:radial-gradient(circle,'+auraColor+',transparent 70%)"></div>'
+    +facelessSVG(...svgArgs)
+    +'<div style="position:absolute;bottom:11%;left:0;right:0;text-align:center;font-family:Amiri,serif;font-size:.78rem;color:rgba(212,160,23,.62)">'+label+'</div>'
+    +'</div>';
+}
+
+function abuBakrPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 55% 35%,#1a1200,#060400)','rgba(255,220,80,.4)',['#e0d8c0','#c0b898',-10,false,false,false],'الوشاح الأبيض — رمز الصدق والزهد'),
+verse:'﴿إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا﴾',
+text:'<strong>أبو بكر الصديق رضي الله عنه</strong> — أول الرجال إيماناً. صاحب النبي ﷺ في الغار. أنفق كل ماله دفاعاً عن المستضعفين. سمّاه النبي ﷺ "الصدّيق" لأنه آمن بلا تردد. <strong>الصدق ليس فضيلة واحدة — هو أساس كل الفضائل.</strong>',vpill:'الصدق والوفاء'},
+{visual:'<div class="vpage"><div class="vic">📜</div><div class="vtitle">قيمة الصدق والإيمان المبكر</div><p class="vdesc">حين أُسري بالنبي ﷺ وكذّبه الناس، كان أبو بكر أول من قال: "صدقت يا رسول الله" بلا دليل إلا الثقة. هذا هو الإيمان الحقيقي.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال ﷺ: "مَا سَبَقَكُمْ أَبُو بَكْرٍ بِكَثْرَةِ صَوْمٍ وَصَلَاةٍ وَلَكِنْ بِشَيْءٍ وَقَرَ فِي قَلْبِهِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي)</span></div>'+mkQ("لماذا سُمّي أبو بكر الصدّيق؟",["لأنه صدّق النبي ﷺ في كل الأوقات بلا تردد","لأنه أكثرهم صوماً","لأنه أكبرهم سناً"],0)+'</div>',text:''},
+];}
+
+function omarPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#0a0520,#020310)','rgba(99,102,241,.18)',['#2a2535','#18141f',0,true,false,false],'القامة الفارعة والرداء الداكن — رمز العدل والقوة'),
+verse:'﴿يَا أَيُّهَا الَّذِينَ آمَنُوا كُونُوا قَوَّامِينَ بِالْقِسْطِ﴾',
+text:'<strong>عمر بن الخطاب رضي الله عنه</strong> — الفاروق. كان قبل الإسلام أشد الناس على المسلمين. بعد إسلامه صار أشد الناس على الظلم. <strong>الإسلام يحوّل القوة إلى حماية للضعيف لا تسليط على الضعيف.</strong>',vpill:'العدل والقوة'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0a0520,#020310);display:flex;align-items:center;justify-content:center;padding-top:50px"><div style="display:flex;flex-direction:column;gap:12px;max-width:290px;z-index:5"><div style="text-align:center;font-size:2.8rem">⚖️</div><div style="background:rgba(99,102,241,.07);border:1px solid rgba(99,102,241,.18);border-radius:12px;padding:14px"><div style="font-family:Amiri,serif;color:#a78bfa;font-size:.88rem;margin-bottom:6px;text-align:center">مقولة عمر الخالدة</div><div style="font-size:.82rem;color:var(--text2);line-height:1.82">جاءه مصري يشكو أن ابن واليه ضربه. فاستدعى الوالي وابنه وقال للمصري: "اضرب ابن الأكرمين!" ثم قال: "مَتَى اسْتَعْبَدْتُمُ النَّاسَ وَقَدْ وَلَدَتْهُمْ أُمَّهَاتُهُمْ أَحْرَارًا؟"</div></div><div style="font-size:.78rem;color:var(--text2);text-align:center">العدل لا يُستثنى منه أحد — حتى أولاد الولاة</div></div></div>',text:'"متى استعبدتم الناس وقد ولدتهم أمهاتهم أحراراً؟" — مقولة خلّدت اسم عمر وأدرجت في دساتير العالم الحديث!'},
+{visual:'<div class="vpage"><div class="vic">⚖️</div><div class="vtitle">قيمة العدل المطلق</div><p class="vdesc">العدل الحقيقي أعمى — لا يرى غنياً أو فقيراً، قوياً أو ضعيفاً. عمر يُعدّ حتى اليوم نموذجاً للحاكم العادل في الحضارة الإنسانية.</p><div class="vhadith">عن عبدالله بن عمرو رضي الله عنهما، أن النبي قال ﷺ: "إِنَّ الْمُقْسِطِينَ عِنْدَ اللَّهِ عَلَى مَنَابِرَ مِنْ نُورٍ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه مسلم)</span></div>'+mkQ("ما أبرز صفات عمر بن الخطاب؟",["العدل — حتى على أولاد ولاته","الكرم دون العدل","التسامح مع الظلم"],0)+'</div>',text:''},
+];}
+
+function uthmanPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#041510,#020808)','rgba(52,211,153,.15)',['#d8f0e0','#a8c8b0',-5,false,false,false],'المصحف والعطاء — رمز الكرم'),
+verse:'﴿وَسَارِعُوا إِلَىٰ مَغْفِرَةٍ مِّن رَّبِّكُمْ﴾',
+text:'<strong>عثمان بن عفان رضي الله عنه</strong> — ذو النورين. زوج بنتي النبي ﷺ. في غزوة تبوك جهّز ثلث الجيش من ماله الخاص. وجمع القرآن الكريم في مصحف واحد يصل إليه كل المسلمين. <strong>الكرم الحقيقي هو أن تعطي ما تحب.</strong>',vpill:'الكرم وجمع القرآن'},
+{visual:'<div class="vpage"><div class="vic">📖</div><div class="vtitle">قيمة الكرم وخدمة الدين</div><p class="vdesc">عثمان رضي الله عنه جمع القرآن ليصل لكل مسلم في الأرض. كرمه لم يكن فقط للناس — بل للدين نفسه.</p><div class="vhadith">عن عبدالرحمن بن سمرة رضي الله عنه، أن النبي قال ﷺ: "مَا ضَرَّ عُثْمَانَ مَا عَمِلَ بَعْدَ الْيَوْمِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي)</span></div>'+mkQ("ما أعظم إنجاز ديني لعثمان بن عفان؟",["جمع القرآن الكريم في مصحف واحد لكل المسلمين","بناء المساجد","الفتوحات العسكرية"],0)+'</div>',text:''},
+];}
+
+function aliPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 50%,#001520,#000810)','rgba(56,189,248,.14)',['#1a3040','#0a1820',5,false,true,false],'الدرع والشجاعة — رمز الفداء'),
+verse:'﴿وَمِنَ النَّاسِ مَن يَشْرِي نَفْسَهُ ابْتِغَاءَ مَرْضَاتِ اللَّهِ﴾',
+text:'<strong>علي بن أبي طالب رضي الله عنه</strong> — ابن عم النبي ﷺ وأول من أسلم من الصبيان. ليلة الهجرة نام في فراش النبي ﷺ ليُخدَع المشركون. نام على الموت فداءً للحبيب. <strong>الشجاعة الحقيقية: أن تضع حياتك دون أن يُجبرك أحد.</strong>',vpill:'الشجاعة والفداء'},
+{visual:'<div class="vpage"><div class="vic">🛡</div><div class="vtitle">قيمة الفداء والشجاعة</div><p class="vdesc">الشجاعة ليست غياب الخوف — بل الاختيار الواعي لما هو أكبر منك. علي اختار فراش الموت بكل وعي محبة لله ولرسوله ﷺ.</p><div class="vhadith">﴿إِنَّ اللَّهَ اشْتَرَىٰ مِنَ الْمُؤْمِنِينَ أَنفُسَهُمْ وَأَمْوَالَهُم بِأَنَّ لَهُمُ الْجَنَّةَ﴾</div>'+mkQ("لماذا نام علي في فراش النبي ﷺ ليلة الهجرة؟",["ليُخدع المشركون ويتمكن النبي ﷺ من الهجرة","لأنه كان مريضاً","لأن النبي أمره بالنوم"],0)+'</div>',text:''},
+];}
+
+function khalidPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#200000,#0a0000)','rgba(239,68,68,.14)',['#3a1010','#201010',5,false,false,true],'السيف والخيل — سيف الله المسلول'),
+verse:'﴿وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ﴾',
+text:'<strong>خالد بن الوليد رضي الله عنه</strong> — سيف الله المسلول. لم يُهزم في معركة واحدة طوال حياته. دخل الإسلام متأخراً لكن كان من أشد المسلمين دفاعاً عنه. <strong>لا يوجد تأخر مع الله — كل لحظة توبة هي نقطة بداية جديدة.</strong>',vpill:'الانتصار بالله'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#200000,#080000);display:flex;align-items:center;justify-content:center;padding-top:50px"><div style="display:flex;flex-direction:column;gap:12px;max-width:290px;z-index:5"><div style="text-align:center;font-size:2.8rem">⚔️</div><div style="display:flex;flex-direction:column;gap:8px"><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.15);border-radius:9px;padding:10px;font-size:.8rem;color:#f87171;text-align:center">100+ معركة — لم يُهزم في واحدة منها</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.15);border-radius:9px;padding:10px;font-size:.8rem;color:var(--gold);text-align:center">دخل الإسلام عام 8 هجري — وصار أعظم قائد</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.15);border-radius:9px;padding:10px;font-size:.8rem;color:var(--emerald);text-align:center">قال: "لا أجد في جسدي موضعاً إلا وفيه جرح"</div></div></div></div>',text:'حارب خالد في أكثر من 100 معركة ولم يُهزم. لكنه مات على فراشه. قال: "ما في جسدي موضع إلا وفيه ضربة أو طعنة، وها أنا أموت كالبعير!"'},
+{visual:'<div class="vpage"><div class="vic">⚔️</div><div class="vtitle">قيمة الجهاد والانتصار بالله</div><p class="vdesc">خالد لم ينتصر بالسيف وحده — بل بالإيمان. كان يقاتل ليرفع راية الله لا ليُثبت قوته. الجهاد الحقيقي هو إخلاص النية.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال ﷺ عن خالد: "نِعْمَ عَبْدُ اللَّهِ خَالِدُ بْنُ الْوَلِيدِ، سَيْفٌ مِنْ سُيُوفِ اللَّهِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه مسلم)</span></div>'+mkQ("لماذا لقّب النبي ﷺ خالداً بـ'سيف الله المسلول'؟",["لأن انتصاراته كانت لرفع راية الله","لأن سيفه كان ذهبياً","لأنه أقوى الناس جسداً"],0)+'</div>',text:''},
+];}
+
+function amrPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#1a0a00,#080400)','rgba(249,115,22,.14)',['#3a2010','#201005',0,false,false,true],'الخريطة والسيف — الذكاء العسكري والدبلوماسي'),
+verse:'﴿وَشَاوِرْهُمْ فِي الْأَمْرِ﴾',
+text:'<strong>عمرو بن العاص رضي الله عنه</strong> — فاتح مصر والعقل الدبلوماسي للإسلام. كان يُرسَل في المهام الصعبة التي تحتاج دهاءً. فتح مصر بجيش صغير عبر الإيمان والذكاء. <strong>الذكاء في خدمة الحق نعمة عظيمة.</strong>',vpill:'الذكاء والحكمة'},
+{visual:'<div class="vpage"><div class="vic">🗺</div><div class="vtitle">قيمة الذكاء في خدمة الحق</div><p class="vdesc">عمرو لم يكن أقوى المحاربين جسداً — لكنه كان أذكاهم تخطيطاً. الله أعطى كل إنسان موهبة مختلفة — فاستخدمها في ما يُرضي الله.</p><div class="vhadith">قال أبو بكر الصديق: "عمرو إن أردت الحرب فعمرو، وإن أردت الأمن فعمرو"</div>'+mkQ("بماذا اشتُهر عمرو بن العاص؟",["بفتح مصر والذكاء الدبلوماسي","بحفظ أكثر الأحاديث","بكرم المال"],0)+'</div>',text:''},
+];}
+
+function ikrimaPg(){return[
+{visual:'<div class="fs-scene" style="background:radial-gradient(ellipse at 50% 40%,#150a25,#060312)"><div class="aura" style="width:200px;height:200px;top:10%;left:50%;margin-left:-100px;background:radial-gradient(circle,rgba(192,132,252,.22),transparent 70%)"></div>'+facelessSVG('#2a1840','#180e28',0,false,false,false)+'<div style="position:absolute;top:15%;right:12%;font-size:2rem;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(192,132,252,.6))">🌟</div><div style="position:absolute;bottom:11%;left:0;right:0;text-align:center;font-family:Amiri,serif;font-size:.78rem;color:rgba(192,132,252,.6)">النجمة المتحولة — رمز التوبة الكاملة</div></div>',
+verse:'﴿قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ﴾',
+text:'<strong>عكرمة بن أبي جهل رضي الله عنه</strong> — ابن أشد أعداء الإسلام. هرب يوم الفتح وهو يريد ركوب البحر للفرار. عاد وأسلم. قال النبي ﷺ: "مرحباً بالراكب المهاجر." تحوّل من ابن أبي جهل إلى مجاهد استشهد في سبيل الله. <strong>لا يأس مع الله — الباب مفتوح للجميع.</strong>',vpill:'التوبة والتحول'},
+{visual:'<div class="vpage"><div class="vic">🌟</div><div class="vtitle">قيمة التوبة والتحول الحقيقي</div><p class="vdesc">عكرمة كان ابن أشد أعداء الإسلام ثم صار من أشد المجاهدين له. التوبة الحقيقية لا تغسل الماضي فحسب — بل تُطلق مستقبلاً جديداً.</p><div class="vhadith">عن ابن مسعود رضي الله عنه، أن النبي قال ﷺ: "التَّائِبُ مِنَ الذَّنْبِ كَمَنْ لَا ذَنْبَ لَهُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه ابن ماجه)</span></div>'+mkQ("ما قصة عكرمة بن أبي جهل؟",["تحوّل من أشد أعداء الإسلام إلى مجاهد استشهد في سبيله","كان مسلماً منذ الصغر","أسلم ثم ارتد"],0)+'</div>',text:''},
+];}
+
+function bilalPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 30%,#3d1a00,#0d0400)','rgba(249,115,22,.18)',['#4a3020','#2a1810',-18,false,false,false],'الرأس المرفوع نحو السماء — رمز الثبات على الإيمان'),
+verse:'﴿إِنَّ الَّذِينَ قَالُوا رَبُّنَا اللَّهُ ثُمَّ اسْتَقَامُوا تَتَنَزَّلُ عَلَيْهِمُ الْمَلَائِكَةُ﴾',
+text:'<strong>بلال بن رباح رضي الله عنه</strong> — العبد الذي ملأ صوته الآفاق. عذّبه أمية تحت الشمس والصخرة. لم يقل إلا: "أحد أحد". اشتراه أبو بكر وأعتقه. يوم الفتح صعد فوق الكعبة وأذّن. <strong>الإيمان يرفع العبد فوق الملوك.</strong>',vpill:'الثبات على الإيمان'},
+{visual:'<div class="vpage"><div class="vic">🕌</div><div class="vtitle">قيمة الثبات رغم الأذى</div><p class="vdesc">بلال كان يعذَّب ويُسأل: "أترجع؟" فيقول: "أحد أحد." الثبات على الحق رغم الألم هو أعلى مراتب الإيمان.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال لبلال: قال ﷺ عن بلال: "سَمِعْتُ دَفَّ نَعْلَيْكَ فِي الْجَنَّةِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("ما كلمة بلال التي لم يتركها رغم العذاب؟",["أحد أحد — الله واحد","سأتركها غداً","لا أعرف ما أقول"],0)+'</div>',text:''},
+];}
+
+function ammarPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#1a0010,#080008)','rgba(244,114,182,.14)',['#3a1030','#200818',0,false,false,false],'الأسرة الصابرة — الشهادة أملهم'),
+verse:'﴿إِنَّمَا يُوَفَّى الصَّابِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ﴾',
+text:'<strong>عمار بن ياسر رضي الله عنه</strong> — أول أسرة عُذّبت في الإسلام. عُذّب هو وأبوه ياسر وأمه سمية أمام عين النبي ﷺ الذي قال: "صبراً آل ياسر، فإن موعدكم الجنة." <strong>المظلوم لا يُنسى عند الله حتى لو نسيه الناس.</strong>',vpill:'الصبر على الأذى'},
+{visual:'<div class="vpage"><div class="vic">🌺</div><div class="vtitle">قيمة الصبر على الإيذاء في سبيل الله</div><p class="vdesc">عمار وأسرته كانوا يُعذَّبون وهم يقولون: "الله الله." الله لم ينسهم — بل ذكرهم في كتابه للأبد.</p><div class="vhadith">عن عبدالله بن جعفر رضي الله عنه، أن النبي قال ﷺ: "صَبْرًا آلَ يَاسِرٍ، فَإِنَّ مَوْعِدَكُمُ الْجَنَّةُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الحاكم وصححه)</span></div>'+mkQ("ما وعد النبي ﷺ لآل ياسر حين كانوا يُعذَّبون؟",["وعدهم بالجنة وقال: صبراً آل ياسر","وعدهم بالإنقاذ العاجل","أخبرهم أن العذاب سينتهي قريباً"],0)+'</div>',text:''},
+];}
+
+function musabPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#001520,#000810)','rgba(56,189,248,.14)',['#1a2838','#0a1520',0,false,false,false],'الكتاب والرسالة — الشاب الداعية'),
+verse:'﴿إِنَّمَا الْمُؤْمِنُونَ إِخْوَةٌ﴾',
+text:'<strong>مصعب بن عمير رضي الله عنه</strong> — كان أجمل شباب مكة وأكثرهم ترفاً. أسلم فطرده أبوه وجوّعه. أرسله النبي ﷺ سفيراً للمدينة. نشر الإسلام حتى لم تبقَ بيت إلا ودخله الإسلام. استشهد في أُحد وكُفّن بثوب صغير لم يكفِ جسده. <strong>أعطى الدنيا كلها مقابل الآخرة.</strong>',vpill:'التضحية بالدنيا للدعوة'},
+{visual:'<div class="vpage"><div class="vic">📚</div><div class="vtitle">قيمة التضحية بالدنيا في سبيل الرسالة</div><p class="vdesc">مصعب كان أثرى شباب مكة ثم تركها كلها. حين استشهد كُفّن بثوب واحد. لكن أثره بقي حتى اليوم. الشباب الحقيقي يبني الآخرة لا الدنيا فحسب.</p><div class="vhadith">قال ﷺ: "لَقَدْ كَانَ أَوَّلُ مَا نَزَلَ مِنَ الْوَحْيِ فِي شَأْنِهِمُ الْكِتَابُ"</div>'+mkQ("لماذا كان مصعب من أبرز الصحابة رغم صغر سنه؟",["لأنه ضحّى بحياة الترف ونشر الإسلام بكل طاقته","لأنه كان أجمل الصحابة","لأنه ابن أغنى رجل في مكة"],0)+'</div>',text:''},
+];}
+
+function sumayyaPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#180815,#080308)','rgba(192,132,252,.14)',['#3a1535','#200a20',0,false,false,false],'التاج والنور — أول شهيدة في الإسلام'),
+verse:'﴿وَلَا تَحْسَبَنَّ الَّذِينَ قُتِلُوا فِي سَبِيلِ اللَّهِ أَمْوَاتًا ۚ بَلْ أَحْيَاءٌ عِندَ رَبِّهِمْ يُرْزَقُونَ﴾',
+text:'<strong>سمية رضي الله عنها</strong> — أم عمار. كانت كبيرة في السن لكن قلبها أقوى من الجبال. عذّبها أبو جهل فرفضت الكفر. قال لها النبي ﷺ: "صبراً يا أم ياسر، فإن موعدكم الجنة." استشهدت ولم تتزعزع. <strong>أول شهيدة في الإسلام علّمت العالم معنى الثبات.</strong>',vpill:'الشهادة في سبيل الله'},
+{visual:'<div class="vpage"><div class="vic">👑</div><div class="vtitle">قيمة الشهادة في سبيل الله</div><p class="vdesc">سمية كانت كبيرة في السن لكنها قالت "لا" لكل أشكال العذاب. الإيمان القوي لا يُقاس بالعمر ولا بالقوة الجسدية — بل بقوة القلب.</p><div class="vhadith">﴿وَمَن يُقَاتِلْ فِي سَبِيلِ اللَّهِ فَيُقْتَلْ أَوْ يَغْلِبْ فَسَوْفَ نُؤْتِيهِ أَجْرًا عَظِيمًا﴾</div>'+mkQ("من كانت سمية رضي الله عنها؟",["أول شهيدة في الإسلام — أم عمار بن ياسر","زوجة أبي بكر","بنت عمر بن الخطاب"],0)+'</div>',text:''},
+];}
+
+function khadijaPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#200010,#0a0008)','rgba(244,114,182,.16)',['#3a1020','#200810',0,false,false,false],'القلب والإسناد — أول المؤمنات'),
+verse:'﴿وَوَجَدَكَ عَائِلًا فَأَغْنَىٰ﴾',
+text:'<strong>خديجة أم المؤمنين رضي الله عنها</strong> — أول من آمن بالنبي ﷺ. حين نزل الوحي وجاء مرتجفاً قالت: "كلا والله لا يخزيك الله أبداً، إنك لتصل الرحم وتحمل الكلّ..." دعّمته بمالها وروحها. قال ﷺ: "ما أبدلني الله خيراً منها." <strong>الوفاء لمن أحسن إليك في وقت الشدة — هذا هو الإنسان الحقيقي.</strong>',vpill:'الوفاء والدعم في الشدة'},
+{visual:'<div class="vpage"><div class="vic">❤</div><div class="vtitle">قيمة الوفاء ودعم أهل الخير</div><p class="vdesc">خديجة علّمت العالم أن الزوجة الصالحة قوة لا تُقاس. دعمت زوجها في أصعب لحظات الرسالة حتى فارقت الحياة. النبي ﷺ لم يتركها في قلبه حتى بعد وفاتها.</p><div class="vhadith">عن عائشة رضي الله عنها، أن النبي قال عن خديجة: قال ﷺ: "آمَنَتْ بِي إِذْ كَفَرَ بِيَ النَّاسُ، وَصَدَّقَتْنِي إِذْ كَذَّبَنِي النَّاسُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه أحمد والبزار)</span></div>'+mkQ("ما أبرز ما فعلته خديجة رضي الله عنها للإسلام؟",["دعمت النبي ﷺ بنفسها ومالها في أحلك اللحظات","حفظت القرآن أولاً","قادت الجيوش"],0)+'</div>',text:''},
+];}
+
+function talhaPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#200800,#0a0300)','rgba(249,115,22,.14)',['#3a1808','#200a04',8,false,true,false],'اليد المفدية — درع النبي البشري'),
+verse:'﴿مِنَ الْمُؤْمِنِينَ رِجَالٌ صَدَقُوا مَا عَاهَدُوا اللَّهَ عَلَيْهِ﴾',
+text:'<strong>طلحة بن عبيدالله رضي الله عنه</strong> — في غزوة أُحد حمى جسده درعاً للنبي ﷺ حتى تُشلّ يده. سمّاه النبي ﷺ "طلحة الجود" لكثرة عطائه. <strong>التضحية الحقيقية هي أن تجعل الآخرين في أمان على حساب نفسك.</strong>',vpill:'التضحية والجود'},
+{visual:'<div class="vpage"><div class="vic">⚔️</div><div class="vtitle">قيمة الجود والتضحية</div><p class="vdesc">طلحة حمى النبي ﷺ بيده حتى أصيبت بـ24 جرحاً. قال النبي ﷺ: "مَنْ أَرَادَ أَنْ يَنْظُرَ إِلَى شَهِيدٍ يَمْشِي عَلَى وَجْهِ الأَرْضِ فَلْيَنْظُرْ إِلَى طَلْحَةَ" <span style="font-size:.68rem;color:rgba(212,160,23,.55)">(رواه الترمذي)</span></div>'+mkQ("لماذا سمّي طلحة بن عبيدالله 'طلحة الجود'؟",["لكثرة عطائه وتضحيته في سبيل الله والنبي ﷺ","لأنه كان أطول الصحابة","لأن اسمه يعني الجود"],0)+'</div>',text:''},
+];}
+
+function zubayrPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#001020,#000810)','rgba(96,165,250,.14)',['#102030','#081520',-8,false,false,true],'السيف المتوهج — حواري النبي'),
+verse:'﴿وَكَانَ بِالْمُؤْمِنِينَ رَحِيمًا﴾',
+text:'<strong>الزبير بن العوام رضي الله عنه</strong> — ابن عمة النبي ﷺ وحواريه. أول من سلّ سيفاً في الإسلام دفاعاً عن النبي ﷺ. كان يقول: "أنا حواري رسول الله." <strong>الوفاء هو أن تكون مع من تحب في أصعب الأوقات.</strong>',vpill:'الوفاء والحماية'},
+{visual:'<div class="vpage"><div class="vic">🗡</div><div class="vtitle">قيمة الوفاء ونصرة الحق</div><p class="vdesc">الزبير أول من سلّ سيف للإسلام حين بلغه كذب أن النبي ﷺ أُسر. هرع لنجدته. الوفاء الحقيقي يتحرك قبل التفكير.</p><div class="vhadith">عن جابر بن عبدالله رضي الله عنهما، أن النبي قال ﷺ: "إِنَّ لِكُلِّ نَبِيٍّ حَوَارِيًّا، وَحَوَارِيَّ الزُّبَيْرُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("بماذا وصف النبي ﷺ الزبير بن العوام؟",["حواريه وخاصته","أشجع الصحابة","أكثرهم علماً"],0)+'</div>',text:''},
+];}
+
+function abdulrahmanPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#181000,#080600)','rgba(253,230,138,.14)',['#3a2808','#201a04',0,false,false,false],'كيس الذهب للفقراء — كرم بلا حدود'),
+verse:'﴿مَثَلُ الَّذِينَ يُنفِقُونَ أَمْوَالَهُمْ فِي سَبِيلِ اللَّهِ كَمَثَلِ حَبَّةٍ أَنبَتَتْ سَبْعَ سَنَابِلَ﴾',
+text:'<strong>عبدالرحمن بن عوف رضي الله عنه</strong> — أحد أثرى التجار في الإسلام. جاء المدينة مهاجراً لا يملك شيئاً وعاد تاجراً بعد أيام! أنفق أموالاً ضخمة في سبيل الله حتى قالت عائشة: "رأيت المدينة ترتجّ بقافلته." <strong>التجارة الحلال عبادة حين تُنفَق في الخير.</strong>',vpill:'الكرم والتجارة الحلال'},
+{visual:'<div class="vpage"><div class="vic">💰</div><div class="vtitle">قيمة الكرم وبركة الرزق الحلال</div><p class="vdesc">عبدالرحمن أثبت أن المسلم يمكنه أن يكون ثرياً وصالحاً معاً. المال في يد صاحب الأخلاق الكريمة رحمة للأمة.</p><div class="vhadith">عن ابن عمر رضي الله عنهما، أن النبي قال ﷺ: "الْيَدُ الْعُلْيَا خَيْرٌ مِنَ الْيَدِ السُّفْلَى"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("كيف أثبت عبدالرحمن أن المال نعمة؟",["أنفقه في سبيل الله وأعان به المسلمين","أخفاه في بيته","أعطاه لأقاربه فقط"],0)+'</div>',text:''},
+];}
+
+function saadPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#180010,#080008)','rgba(244,114,182,.12)',['#2a1020','#180808',0,false,false,false],'القوس والسهم — دقة الإيمان'),
+verse:'﴿وَأَعِدُّوا لَهُم مَّا اسْتَطَعْتُم مِّن قُوَّةٍ﴾',
+text:'<strong>سعد بن أبي وقاص رضي الله عنه</strong> — أول من رمى بسهم في سبيل الله. خال النبي ﷺ الذي قال له: "ارمِ سعدُ، فداك أبي وأمي." قائد معركة القادسية التي فتحت الفرس. <strong>الإتقان في العمل عبادة — كل سهم بنية صحيحة يُؤجَر عليه.</strong>',vpill:'الإتقان والدقة'},
+{visual:'<div class="vpage"><div class="vic">🏹</div><div class="vtitle">قيمة الإتقان في كل عمل</div><p class="vdesc">سعد لم يكن أول المسلمين ولا الأعلى منزلة — لكنه أتقن ما أُعطيه وفعل ما أُمر به خير قيام. الإتقان في العمل هو معنى الإحسان.</p><div class="vhadith">عن عائشة رضي الله عنها، أن النبي قال ﷺ: "إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلًا أَنْ يُتْقِنَهُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه البيهقي وصححه الألباني)</span></div>'+mkQ("بماذا تميّز سعد بن أبي وقاص؟",["بالدقة والإتقان — أول من رمى بسهم في الإسلام","بحفظ أكثر الأحاديث","بالكرم الزائد"],0)+'</div>',text:''},
+];}
+
+function abuUbaydaPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#100820,#050410)','rgba(167,139,250,.14)',['#281540','#180a28',0,false,false,false],'الدرع والوقار — أمين هذه الأمة'),
+verse:'﴿وَاللَّهُ يُحِبُّ الْمُحْسِنِينَ﴾',
+text:'<strong>أبو عبيدة عامر الجراح رضي الله عنه</strong> — سمّاه النبي ﷺ "أمين هذه الأمة." كان وقوراً هادئاً يحمل الأمانة كأثقل ما تكون. يوم بدر قتل أباه المشرك حين هاجمه. <strong>الأمانة أحياناً تكلّفك أعزّ ما تملك.</strong>',vpill:'الأمانة والوقار'},
+{visual:'<div class="vpage"><div class="vic">🛡</div><div class="vtitle">قيمة الأمانة والوقار</div><p class="vdesc">أبو عبيدة لم يطلب منصباً ولم يتكبر. حين منحه النبي ﷺ لقب "أمين الأمة" حمله بصدق. الأمانة ليست لقباً — هي سلوك يومي.</p><div class="vhadith">عن أنس بن مالك رضي الله عنه، أن النبي قال ﷺ: "لِكُلِّ أُمَّةٍ أَمِينٌ، وَأَمِينُ هَذِهِ الأُمَّةِ أَبُو عُبَيْدَةَ بْنُ الجَرَّاحِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("ما لقب أبي عبيدة الذي منحه النبي ﷺ؟",["أمين هذه الأمة","سيف الله","الصدّيق"],0)+'</div>',text:''},
+];}
+
+function khabbabPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#200800,#0a0300)','rgba(249,115,22,.14)',['#3a1808','#201004',0,false,false,false],'الجمر والصبر — الظهر الصابر'),
+verse:'﴿أَمْ حَسِبْتُمْ أَن تَدْخُلُوا الْجَنَّةَ وَلَمَّا يَعْلَمِ اللَّهُ الَّذِينَ جَاهَدُوا مِنكُمْ﴾',
+text:'<strong>خباب بن الأرت رضي الله عنه</strong> — وُضع على الجمر المتقد حتى انطفأت النار بدهن ظهره. أتى النبي ﷺ شاكياً فأجابه: "كان من قبلكم يُنشر بالمناشير ولا يرتدّون." <strong>إذا عرفت أن من سبقك أُوذي أكثر منك، هانت مصيبتك.</strong>',vpill:'الصبر مع المقارنة بمن سبق'},
+{visual:'<div class="vpage"><div class="vic">🔥</div><div class="vtitle">قيمة الصبر على الإيذاء الجسدي</div><p class="vdesc">خباب علّمنا أن الأذى الجسدي لا يكسر المؤمن. حتى حين اشتكى للنبي ﷺ، أُعطي منظوراً أوسع: "من قبلكم أُوذوا أكثر."</p><div class="vhadith">قال ﷺ: "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(قرآن كريم — البقرة: 153)</span></div>'+mkQ("ما قال النبي ﷺ لخباب حين شكا شدة العذاب؟",["أخبره أن من قبلهم صبروا على أشد من ذلك","وعده بأن العذاب سينتهي اليوم","أمره بالهجرة فوراً"],0)+'</div>',text:''},
+];}
+
+function abuDharrPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#001520,#000810)','rgba(96,165,250,.14)',['#0a2030','#051018',0,false,false,false],'النجمة والزهد — حامل الكنز الحقيقي'),
+verse:'﴿وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا﴾',
+text:'<strong>أبو ذر الغفاري رضي الله عنه</strong> — أسلم وحده وعاد لقومه داعياً. كان أشد الصحابة زهداً ووضوحاً في قول الحق للسلطان. قال ﷺ له: "ما أظلّت الخضراء وما أقلّت الغبراء من رجل أصدق لهجة من أبي ذر." <strong>الزهد ليس فقراً — بل حرية من عبودية الدنيا.</strong>',vpill:'الزهد والصدق مع السلطان'},
+{visual:'<div class="vpage"><div class="vic">⭐</div><div class="vtitle">قيمة الزهد وقول الحق</div><p class="vdesc">أبو ذر لم يُدهش بالذهب والفضة. قال الحق للأغنياء والحكام. الزهد أعطاه حرية لم يملكها الملوك.</p><div class="vhadith">عن أبي ذر رضي الله عنه، أن النبي قال ﷺ: "مَا أَظَلَّتِ الخَضْرَاءُ وَلَا أَقَلَّتِ الغَبْرَاءُ مِنْ رَجُلٍ أَصْدَقَ لَهْجَةً مِنْ أَبِي ذَرٍّ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي وابن ماجه)</span></div>'+mkQ("بماذا اشتُهر أبو ذر الغفاري؟",["بالزهد الشديد وقول الحق حتى للسلطان","بالشجاعة العسكرية","بكثرة الصيام"],0)+'</div>',text:''},
+];}
+
+function saeedPg(){return[
+{visual:sahaba_scene('radial-gradient(ellipse at 50% 40%,#041510,#020808)','rgba(52,211,153,.12)',['#1a3020','#0a1810',0,false,false,false],'اليد المرفوعة — الإيمان المبكر'),
+verse:'﴿السَّابِقُونَ الْأَوَّلُونَ مِنَ الْمُهَاجِرِينَ وَالْأَنصَارِ﴾',
+text:'<strong>سعيد بن زيد رضي الله عنه</strong> — أسلم مبكراً وزوجته أيضاً حتى أصبحا من السابقين. شقيق عمر. ثبت على إيمانه وهو يتحمل الأذى. <strong>الإيمان المبكر له قيمة خاصة — شجاعة على المجهول.</strong>',vpill:'الإيمان المبكر والشجاعة'},
+{visual:'<div class="vpage"><div class="vic">🌿</div><div class="vtitle">قيمة الإيمان بلا نتيجة مضمونة</div><p class="vdesc">سعيد آمن حين كان المسلمون قلّة مضطهدة. لم ير النصر بعد. آمن لأنه رأى الحق لا لأنه رأى النتائج. هذا هو الإيمان الذهبي.</p><div class="vhadith">عن معاذ بن جبل رضي الله عنه، أن النبي قال ﷺ: "أَبْشِرُوا وَأَبْشِرُوا، فَلَيْسَ عَلَى مَنْ قَالَ لَا إِلَهَ إِلَّا اللَّهُ وَقَدْ مَاتَ عَلَيْهَا شَيْءٌ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("ما ميزة الإيمان المبكر عند الصحابة؟",["أنه كان إيماناً بلا ضمان نتائج — شجاعة حقيقية","أنه أسهل لأن القرآن كان جديداً","أنه كان مجبراً عليه"],0)+'</div>',text:''},
+];}
+
+function lutPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a0a00,#080400);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(251,191,36,.5))">🏔</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--gold);margin-bottom:14px">لوط — النبي الصابر على القوم</div><div style="display:flex;flex-direction:column;gap:9px;max-width:280px"><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#f87171">قوم سدوم رفضوا دعوته ومارسوا الفاحشة</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">ثبت على دعوته وحده عقوداً طويلة</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--emerald)">الله أنجاه وأهلك القوم المجرمين</div></div></div></div>',
+verse:'﴿فَأَنجَيْنَاهُ وَأَهْلَهُ إِلَّا امْرَأَتَهُ كَانَتْ مِنَ الْغَابِرِينَ﴾',
+text:'<strong>لوط عليه السلام</strong> أُرسل إلى قوم سدوم الذين اشتُهروا بالفاحشة العظيمة. دعاهم سنوات طويلة فلم يؤمن معه إلا قليل. لكنه لم يتخلَّ عن رسالته. <strong>الثبات على الحق ولو وقفت وحدك — هذا هو ميراث لوط.</strong>',vpill:'الثبات على الحق'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 60%,#1a0500,#050200);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3rem;margin-bottom:14px;animation:orbP 2.5s ease-in-out infinite">🌋</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:#f87171;margin-bottom:12px">العذاب — حجارة من سجيل</div><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(239,68,68,.85);line-height:2;text-align:center">إِنَّا أُرْسِلْنَا إِلَىٰ قَوْمٍ مُّجْرِمِينَ</div><div style="margin-top:12px;font-size:.8rem;color:var(--text2)">أُمر لوط بالخروج ليلاً وعدم الالتفات</div></div></div>',
+verse:'﴿وَأَمْطَرْنَا عَلَيْهَا حِجَارَةً مِّن سِجِّيلٍ﴾',
+text:'أرسل الله ملائكة لإنجاء لوط قبل العذاب. قالوا له: أخرج بأهلك من آخر الليل ولا يلتفت منكم أحد. <strong>الله لا يضيع المؤمن الصابر — النجاة تأتي حين يشتد الظلام.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🏔</div><div class="vtitle">قيمة الثبات على الحق</div><p class="vdesc">لوط لم يغيّر موقفه ليُرضي قومه. قال الحق وتحمّل الأذى وحده. الثبات على الحق أحياناً يجعلك غريباً بين قومك — لكنه يجعلك قريباً من الله.</p><div class="vhadith">﴿طُوبَىٰ لِلْغُرَبَاءِ — الَّذِينَ يُصْلِحُونَ مَا أَفْسَدَ النَّاسُ﴾</div>'+mkQ("ما الدرس الأعظم من قصة لوط؟",["الثبات على الحق حتى لو كنت وحدك","الهروب من المشكلات دائماً","قبول الناس كما هم"],0)+'</div>',text:''},
+];}
+
+function hudPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001a10,#000a05);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(110,231,183,.5))">🌬</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--emerald);margin-bottom:14px">هود — نبي قوم عاد</div><div style="display:flex;flex-direction:column;gap:9px;max-width:280px"><div style="background:rgba(110,231,183,.06);border:1px solid rgba(110,231,183,.2);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#6ee7b7">قوم عاد — أقوى الأمم جسداً وعمراناً</div><div style="background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#f87171">اغتروا بقوتهم فقالوا: من أشد منا قوة؟</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">هود دعاهم وحده وصبر على تكذيبهم</div></div></div></div>',
+verse:'﴿وَإِلَىٰ عَادٍ أَخَاهُمْ هُودًا ۗ قَالَ يَا قَوْمِ اعْبُدُوا اللَّهَ﴾',
+text:'<strong>هود عليه السلام</strong> أُرسل لقوم عاد — أبناء عمومته وأقاربه. كانوا أضخم الناس جسداً وأقواهم بنياناً. قالوا: "من أشد منا قوة؟" فأجابهم هود بلا خوف: "الله أشد منكم قوة." <strong>الدعوة بثبات أمام المتكبرين — هذا هو درس هود.</strong>',vpill:'الدعوة بثبات'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0a1500,#040a00);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:float 2s ease-in-out infinite">🌪</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--emerald);margin-bottom:12px">الريح العقيم — سبع ليالٍ وثمانية أيام</div><div style="background:rgba(110,231,183,.07);border:1px solid rgba(110,231,183,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(110,231,183,.88);line-height:2;text-align:center">فَأَصْبَحُوا لَا يُرَىٰ إِلَّا مَسَاكِنُهُمْ</div><div style="margin-top:12px;font-size:.8rem;color:var(--text2)">هود وأتباعه نجّاهم الله من العذاب</div></div></div>',
+verse:'﴿فَأُهْلِكُوا بِرِيحٍ صَرْصَرٍ عَاتِيَةٍ﴾',
+text:'أرسل الله ريحاً عاتية دمّرت عاداً تسعة أيام متواصلة. أصبحوا كأعجاز النخل الخاوية. <strong>القوة الجسدية لا تقاوم قدر الله — والتواضع لله هو الأمان الحقيقي.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🌬</div><div class="vtitle">قيمة الدعوة بثبات</div><p class="vdesc">هود دعا وحده بلا جيش ولا سلطة، أمام أقوى أمة في زمانه. قيمته: أن صدق رسالتك يمنحك شجاعة لا تُشترى. الدعوة الصادقة لا تحتاج قوة — بل يقين.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال ﷺ: "إِنَّ اللَّهَ لَيُؤَيِّدُ هَذَا الدِّينَ بِالرَّجُلِ الْفَاجِرِ، فَكَيْفَ بِالْمُؤْمِنِ الصَّادِقِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه البخاري)</span></div>'+mkQ("ما رد هود على قوم عاد حين قالوا: من أشد منا قوة؟",["قال: الله أشد منكم قوة وبطشاً","طلب منهم الرحمة","فرّ من بينهم"],0)+'</div>',text:''},
+];}
+
+function salehPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1200,#080500);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4.5rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(252,211,77,.5))">🐪</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--gold);margin-bottom:14px">صالح — وناقة الله</div><div style="background:rgba(252,211,77,.07);border:1px solid rgba(252,211,77,.2);border-radius:14px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.9rem;color:rgba(252,211,77,.9);line-height:2;text-align:center">هَٰذِهِ نَاقَةُ اللَّهِ لَكُمْ آيَةً فَذَرُوهَا تَأْكُلْ فِي أَرْضِ اللَّهِ</div></div></div></div>',
+verse:'﴿وَإِلَىٰ ثَمُودَ أَخَاهُمْ صَالِحًا ۗ قَالَ يَا قَوْمِ اعْبُدُوا اللَّهَ﴾',
+text:'<strong>صالح عليه السلام</strong> أُرسل لقوم ثمود في الحجر. طلبوا منه آية فأخرج الله لهم ناقة من الصخرة معجزة. قال لهم: اتركوها تأكل ولا تمسوها بسوء. <strong>الصدق مع القوم يبدأ باحترام أوامر الله.</strong>',vpill:'الصدق مع القوم'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#200000,#080000);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3rem;margin-bottom:12px;animation:orbP 3s ease-in-out infinite">💥</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:#f87171;margin-bottom:12px">عقر الناقة — الخطيئة المميتة</div><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.2);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(239,68,68,.85);line-height:1.95;text-align:center">تَمَتَّعُوا فِي دَارِكُمْ ثَلَاثَةَ أَيَّامٍ<br>ذَٰلِكَ وَعْدٌ غَيْرُ مَكْذُوبٍ</div><div style="margin-top:12px;font-size:.8rem;color:var(--text2)">الصاعقة أهلكت ثمود في اليوم الرابع</div></div></div>',
+verse:'﴿فَعَقَرُوا النَّاقَةَ وَعَتَوْا عَنْ أَمْرِ رَبِّهِمْ وَقَالُوا يَا صَالِحُ ائْتِنَا بِمَا تَعِدُنَا﴾',
+text:'عقر أحدهم الناقة تحدياً. فأنذرهم صالح: تمتعوا ثلاثة أيام ثم العذاب. كلمة النبي حقيقة لا تحتاج دليلاً إضافياً. <strong>الاستهانة بأوامر الله مهما بدت صغيرة — بداية الهلاك.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🐪</div><div class="vtitle">قيمة الصدق مع القوم</div><p class="vdesc">صالح لم يكذب ولم يخفِ الحقيقة. أعلن العذاب بثلاثة أيام بصدق تام. الصدق الحقيقي يعني قول الحق حتى حين يكون مؤلماً لمن تُحب.</p><div class="vhadith">عن ابن مسعود رضي الله عنه، أن النبي قال ﷺ: "عَلَيْكُمْ بِالصِّدْقِ، فَإِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("ما الآية التي أعطاها الله لقوم ثمود على يد صالح؟",["ناقة خرجت من الصخرة بإذن الله","نهر من العسل","جنة في الصحراء"],0)+'</div>',text:''},
+];}
+
+function shuaybPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001510,#000a08);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(134,239,172,.5))">⚖️</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--emerald);margin-bottom:14px">شعيب — نبي التجار</div><div style="display:flex;flex-direction:column;gap:9px;max-width:280px"><div style="background:rgba(134,239,172,.06);border:1px solid rgba(134,239,172,.2);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#86efac">قوم مدين — اشتُهروا بطش الميزان والغش</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">شعيب دعاهم: أوفوا الكيل والميزان</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--emerald)">ربط العدل في التجارة بعبادة الله</div></div></div></div>',
+verse:'﴿وَإِلَىٰ مَدْيَنَ أَخَاهُمْ شُعَيْبًا ۗ قَالَ يَا قَوْمِ اعْبُدُوا اللَّهَ﴾',
+text:'<strong>شعيب عليه السلام</strong> سُمّي "خطيب الأنبياء" لفصاحته وبلاغته. أُرسل لقوم مدين الذين كانوا يطففون الكيل ويغشون في التجارة. دعاهم إلى العدل وأوفوا الكيل والميزان. <strong>التجارة الحلال عبادة — والغش فيها جريمة بحق المجتمع.</strong>',vpill:'العدل في التجارة'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0a1500,#050a00);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:float 2s ease-in-out infinite">🌩</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:#86efac;margin-bottom:12px">الظلة — الصيحة والعذاب</div><div style="background:rgba(134,239,172,.07);border:1px solid rgba(134,239,172,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(134,239,172,.88);line-height:1.95;text-align:center">وَأَخَذَ الَّذِينَ ظَلَمُوا الصَّيْحَةُ فَأَصْبَحُوا فِي دِيَارِهِمْ جَاثِمِينَ</div></div></div>',
+verse:'﴿وَمَا ظَلَمْنَاهُمْ وَلَٰكِن كَانُوا أَنفُسَهُمْ يَظْلِمُونَ﴾',
+text:'ردّ قوم مدين دعوة شعيب وقالوا: "لا نفهم كثيراً مما تقول." فجاء العذاب صيحة من السماء. <strong>الظلم الاقتصادي ظلم اجتماعي يدمّر المجتمع — والعدل في المعاملات أساس الأمان.</strong>'},
+{visual:'<div class="vpage"><div class="vic">⚖️</div><div class="vtitle">قيمة العدل في التجارة</div><p class="vdesc">شعيب ربط العدل في الميزان بعبادة الله مباشرة — لأن الغش تكذيب لله بالفعل. كل معاملة صادقة هي عبادة وكل غشّ هو نقض للإيمان من الداخل.</p><div class="vhadith">عن أبي سعيد الخدري رضي الله عنه، أن النبي قال ﷺ: "التَّاجِرُ الصَّدُوقُ الْأَمِينُ مَعَ النَّبِيِّينَ وَالصِّدِّيقِينَ وَالشُّهَدَاءِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي وصححه الألباني)</span></div>'+mkQ("لماذا ربط شعيب العدل في الميزان بعبادة الله؟",["لأن التعامل الصادق جزء من الإيمان","لأن الميزان أهم من الصلاة","لأن التجارة أرزاق الناس فقط"],0)+'</div>',text:''},
+];}
+
+function haroonPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001a10,#000a05);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(52,211,153,.5))">🌿</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--emerald);margin-bottom:14px">هارون — الأخ الوزير</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.2);border-radius:14px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.9rem;color:rgba(52,211,153,.9);line-height:2;text-align:center">وَاجْعَل لِّي وَزِيرًا مِّنْ أَهْلِي هَارُونَ أَخِي — طلب موسى من ربه</div></div></div></div>',
+verse:'﴿وَأَخِي هَارُونُ هُوَ أَفْصَحُ مِنِّي لِسَانًا﴾',
+text:'<strong>هارون عليه السلام</strong> — أخو موسى الأكبر. طلب موسى من الله أن يجعله وزيراً ومعيناً في رسالته. كان هارون أفصح لساناً وأهدأ طبعاً. <strong>التعاون بين الأخوين الصادقين — نموذج في كيفية خدمة الدعوة بشكل جماعي.</strong>',vpill:'التعاون والأخوة'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0d0820,#050410);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:float 3s ease-in-out infinite">🐂</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--purple);margin-bottom:12px">العجل — لحظة الابتلاء</div><div style="background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(167,139,250,.88);line-height:1.95;text-align:center">قَالَ يَا هَارُونُ مَا مَنَعَكَ إِذْ رَأَيْتَهُمْ ضَلُّوا أَلَّا تَتَّبِعَنِ</div><div style="margin-top:12px;font-size:.8rem;color:var(--text2)">هارون نهاهم لكنهم لم يستمعوا</div></div></div>',
+verse:'﴿قَالَ ابْنَ أُمَّ لَا تَأْخُذْ بِلِحْيَتِي وَلَا بِرَأْسِي﴾',
+text:'حين غاب موسى عبد قومه العجل وهارون معهم. حاول هارون نهيهم فلم يستمعوا. غضب موسى عليه لكن هارون أوضح حاله. <strong>الإنسان الصادق يبذل ما يستطيع ثم يكل الأمر لله — والأخوة تتحمل سوء الفهم.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🌿</div><div class="vtitle">قيمة التعاون والأخوة</div><p class="vdesc">موسى وهارون معاً أقوى من موسى وحده. التعاون في الدعوة والأعمال الصالحة يضاعف الأثر ويخفف العبء. وأعظم التعاون حين يكون مع من تثق به من أهلك.</p><div class="vhadith">﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ وَلَا تَعَاوَنُوا عَلَى الْإِثْمِ وَالْعُدْوَانِ﴾</div>'+mkQ("ما الذي طلبه موسى من الله في دعوته؟",["أن يجعل أخاه هارون وزيراً ومعيناً له","أن يُعطيه قوة خارقة","أن يُعطيه مالاً"],0)+'</div>',text:''},
+];}
+
+function idrisPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0a0820,#040312);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(165,180,252,.6))">📐</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:#a5b4fc;margin-bottom:14px">إدريس — نبي العلم والحكمة</div><div style="display:flex;flex-direction:column;gap:9px;max-width:280px"><div style="background:rgba(165,180,252,.06);border:1px solid rgba(165,180,252,.2);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#a5b4fc">أول من كتب بالقلم على وجه الأرض</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">علّمه الله الكتابة والحساب والفلك</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--emerald)">رُفع إلى السماء وهو حيّ بإذن الله</div></div></div></div>',
+verse:'﴿وَرَفَعْنَاهُ مَكَانًا عَلِيًّا﴾',
+text:'<strong>إدريس عليه السلام</strong> — يُنسب إليه أنه أول من كتب بالقلم وتعلّم الخياطة والحساب. أعطاه الله علماً وحكمة جعلاه نبياً ومعلماً للبشرية. <strong>العلم النافع طريق الرفعة في الدنيا والآخرة.</strong>',vpill:'العلم والحكمة'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 30%,#05081a,#020310);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:310px"><div style="font-size:3.5rem;margin-bottom:12px;animation:orbP 3s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(165,180,252,.7))">✨</div><div style="font-family:Amiri,serif;font-size:1.2rem;color:#a5b4fc;margin-bottom:12px">الرفعة في السماء — مكانة عالية</div><div style="background:rgba(165,180,252,.07);border:1px solid rgba(165,180,252,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(165,180,252,.9);line-height:2;text-align:center">رُفع إدريس إلى السماء الرابعة ليلة المعراج كان فيها — وهو في مقام عظيم عند الله</div></div></div>',
+verse:'﴿إِنَّهُ كَانَ صِدِّيقًا نَّبِيًّا﴾',
+text:'في رحلة الإسراء والمعراج مرّ النبي ﷺ بإدريس في السماء الرابعة. رفعه الله مكاناً علياً جزاءً على إخلاصه وعلمه. <strong>العلم لله يرفع صاحبه في الدنيا والآخرة.</strong>'},
+{visual:'<div class="vpage"><div class="vic">📐</div><div class="vtitle">قيمة العلم والحكمة</div><p class="vdesc">إدريس لم يكن مشهوراً بالسيف أو الملك — بل بالعلم والكتابة. رفعه الله بعلمه. العلم النافع هو أشرف ما يكتسبه الإنسان لأنه يبقى بعده ويرفع ذكره.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال ﷺ: "مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ طَرِيقًا إِلَى الْجَنَّةِ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه مسلم)</span></div>'+mkQ("بماذا اشتُهر إدريس عليه السلام؟",["بالعلم والكتابة وأول من كتب بالقلم","بالفروسية والجهاد","بالصوم الدائم فقط"],0)+'</div>',text:''},
+];}
+
+function ilyasPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001530,#000818);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(125,211,252,.6))">⚡</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:#7dd3fc;margin-bottom:14px">إلياس — نبي الوادي الشامخ</div><div style="display:flex;flex-direction:column;gap:9px;max-width:280px"><div style="background:rgba(125,211,252,.06);border:1px solid rgba(125,211,252,.2);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#7dd3fc">أُرسل لبني إسرائيل في الشام</div><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#f87171">قومه يعبدون الصنم "بعل" علناً</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">واجههم وحده بلا خوف من الملك الظالم</div></div></div></div>',
+verse:'﴿وَإِنَّ إِلْيَاسَ لَمِنَ الْمُرْسَلِينَ ۝ إِذْ قَالَ لِقَوْمِهِ أَلَا تَتَّقُونَ﴾',
+text:'<strong>إلياس عليه السلام</strong> — أُرسل لبني إسرائيل في الشام حين انتشرت بينهم عبادة الصنم "بعل". وقف أمام الملك الظالم وعبّاد الصنم وحده. <strong>الشجاعة في الدعوة: قول الحق للظالمين ولو كنت وحيداً.</strong>',vpill:'الشجاعة في الدعوة'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001a20,#000a10);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:float 2.5s ease-in-out infinite">🌊</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:#7dd3fc;margin-bottom:12px">النجاة والسلام على إلياس</div><div style="background:rgba(125,211,252,.07);border:1px solid rgba(125,211,252,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(125,211,252,.88);line-height:2;text-align:center">سَلَامٌ عَلَىٰ إِلْيَاسِينَ — ذكره الله بالثناء العظيم</div></div></div>',
+verse:'﴿إِنَّهُ مِنْ عِبَادِنَا الْمُؤْمِنِينَ﴾',
+text:'أثنى الله على إلياس في القرآن وجعل له ذكراً بين الأجيال. <strong>من ثبت على الحق في وجه الظلم أثبت الله ذكره في التاريخ.</strong>'},
+{visual:'<div class="vpage"><div class="vic">⚡</div><div class="vtitle">قيمة الشجاعة في الدعوة</div><p class="vdesc">إلياس واجه الملك الظالم وعباد الأصنام وحده. الشجاعة الحقيقية ليست غياب الخوف — بل أن يكون خوفك من الله أعظم من خوفك من الناس.</p><div class="vhadith">عن أبي سعيد الخدري رضي الله عنه، أن النبي قال ﷺ: "أَفْضَلُ الْجِهَادِ كَلِمَةُ حَقٍّ عِنْدَ سُلْطَانٍ جَائِرٍ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه الترمذي وصححه الألباني)</span></div>'+mkQ("ما الموقف الذي اشتُهر به إلياس؟",["مواجهة الملك الظالم وعبّاد الصنم وحده","هجرته الطويلة","كثرة صيامه وعبادته"],0)+'</div>',text:''},
+];}
+
+function alyasaPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001520,#000a12);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4.5rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(147,197,253,.5))">💧</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:#93c5fd;margin-bottom:14px">اليسع — وارث الرسالة</div><div style="display:flex;flex-direction:column;gap:9px;max-width:280px"><div style="background:rgba(147,197,253,.06);border:1px solid rgba(147,197,253,.2);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:#93c5fd">تلميذ إلياس وخليفته على بني إسرائيل</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--gold)">مكّنه الله من المعجزات وأيّده</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:10px;padding:10px;text-align:center;font-size:.82rem;color:var(--emerald)">ذكره الله في القرآن مع الأخيار</div></div></div></div>',
+verse:'﴿وَاذْكُرْ إِسْمَاعِيلَ وَالْيَسَعَ وَذَا الْكِفْلِ ۚ وَكُلٌّ مِّنَ الْأَخْيَارِ﴾',
+text:'<strong>اليسع عليه السلام</strong> — كان تلميذاً لإلياس ثم صار نبياً ورث مهمته. أيّده الله بالمعجزات ودعا قومه للتوحيد بعد إلياس. <strong>الإيمان الصادق يرث الرسالة ويُكملها — لا يتوقف بغياب المعلم.</strong>',vpill:'الإيمان والصبر'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#001828,#000c15);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:orbP 3s ease-in-out infinite">🌟</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:#93c5fd;margin-bottom:12px">مكانة اليسع عند الله</div><div style="background:rgba(147,197,253,.07);border:1px solid rgba(147,197,253,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(147,197,253,.88);line-height:2;text-align:center">فَضَّلْنَاهُمْ عَلَى الْعَالَمِينَ — ذكره الله مع المفضَّلين</div></div></div>',
+verse:'﴿وَكُلًّا فَضَّلْنَا عَلَى الْعَالَمِينَ﴾',
+text:'ذكر الله اليسع في القرآن ضمن الأنبياء المختارين المفضَّلين على العالمين. <strong>الإخلاص والصبر في اتباع الحق يرفع العبد عند الله حتى يُذكر في الكتاب العزيز.</strong>'},
+{visual:'<div class="vpage"><div class="vic">💧</div><div class="vtitle">قيمة الإيمان والصبر</div><p class="vdesc">اليسع لم يكن الأول ولا أشهر الأنبياء — لكنه كمّل الرسالة بعد معلمه بإخلاص. الصبر والإيمان يجعلان الإنسان وارث الخيرات حتى ما لم يبدأها.</p><div class="vhadith">عن أبي موسى الأشعري رضي الله عنه، أن النبي قال ﷺ: "مَنْ صَبَرَ وَاحْتَسَبَ نَالَ أَجْرَهُ عِنْدَ اللَّهِ كَامِلًا"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه البخاري)</span></div>'+mkQ("ما الدور الذي قام به اليسع عليه السلام؟",["ورث مهمة إلياس وأكمل الدعوة بعده","بنى هيكلاً عظيماً","قاد جيشاً لفتح بلاد"],0)+'</div>',text:''},
+];}
+
+function ishaqPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#140f00,#080500);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(251,191,36,.6))">⭐</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--gold);margin-bottom:14px">إسحاق — بشارة الإيمان</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:14px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.9rem;color:rgba(251,191,36,.9);line-height:2;text-align:center">وَبَشَّرْنَاهُ بِإِسْحَاقَ نَبِيًّا مِّنَ الصَّالِحِينَ — بشّر الله إبراهيم به</div></div></div></div>',
+verse:'﴿وَوَهَبْنَا لَهُ إِسْحَاقَ وَيَعْقُوبَ ۚ كُلًّا هَدَيْنَا﴾',
+text:'<strong>إسحاق عليه السلام</strong> — الابن الثاني لإبراهيم من زوجته سارة. بُشّر به وهو شيخ كبير وزوجته عجوز. وُلد معجزة إيمانية وصار نبياً وأباً للأنبياء — منه جاء يعقوب ومن يعقوب جاء يوسف. <strong>البركة تتسلسل في العائلة الصالحة من جيل لجيل.</strong>',vpill:'البركة والإيمان'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1200,#0a0700);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:float 3s ease-in-out infinite">👨‍👦</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--gold);margin-bottom:12px">سلسلة الأنبياء — بيت النبوة</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(251,191,36,.88);line-height:2;text-align:center"><div>إبراهيم ← إسحاق ← يعقوب</div><div style="margin-top:8px;font-size:.8rem;color:var(--text2)">بيت واحد أخرج أنبياء كثيرين</div></div></div></div>',
+verse:'﴿وَجَعَلْنَا فِي ذُرِّيَّتِهِ النُّبُوَّةَ وَالْكِتَابَ﴾',
+text:'من إسحاق تسلسلت النبوة — يعقوب ثم الأسباط ثم يوسف ثم موسى وعيسى. <strong>الصلاح الأسري ينعكس على الأجيال — من تربّى على التوحيد ربّى أبناء على التوحيد.</strong>'},
+{visual:'<div class="vpage"><div class="vic">⭐</div><div class="vtitle">قيمة البركة والإيمان</div><p class="vdesc">إسحاق وُلد بشارة — بدأ وجوده على الأرض معجزة إلهية. البركة في العائلة ليست مصادفة — بل نتيجة إيمان الجد وأمانة الأب وتربية الأم على الصلاح.</p><div class="vhadith">عن واثلة بن الأسقع رضي الله عنه، أن النبي قال ﷺ: "إِنَّ اللَّهَ اصْطَفَى مِنْ وَلَدِ إِبْرَاهِيمَ إِسْمَاعِيلَ، ثُمَّ اصْطَفَى مِنْ وَلَدِ إِسْمَاعِيلَ بَنِي كِنَانَةَ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(رواه مسلم)</span></div>'+mkQ("ما أهمية إسحاق في سلسلة الأنبياء؟",["منه تسلسلت نبوة يعقوب ويوسف وموسى وعيسى","كان أقوى من إبراهيم","ولد في مصر"],0)+'</div>',text:''},
+];}
+
+function yaqubPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#100820,#050412);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(196,181,253,.5))">🌙</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:#c4b5fd;margin-bottom:14px">يعقوب — الصبر الجميل</div><div style="background:rgba(196,181,253,.07);border:1px solid rgba(196,181,253,.2);border-radius:14px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.9rem;color:rgba(196,181,253,.9);line-height:2;text-align:center">قَالَ إِنَّمَا أَشْكُو بَثِّي وَحُزْنِي إِلَى اللَّهِ — لم يشكُ لأحد غير الله</div></div></div></div>',
+verse:'﴿فَصَبْرٌ جَمِيلٌ ۖ وَاللَّهُ الْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ﴾',
+text:'<strong>يعقوب عليه السلام</strong> — فقد ابنه يوسف عقوداً طويلة وبكى حتى ابيضّت عيناه. لكنه قال: "فصبر جميل" ولم يشكُ لأحد غير الله. <strong>الصبر الجميل: حين يعلم الله وجعك ويكفي ذلك.</strong>',vpill:'الصبر الجميل'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#0a1500,#040a00);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:orbP 3s ease-in-out infinite">❤</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--emerald);margin-bottom:12px">لقاء يوسف — الفرج بعد الضيق</div><div style="background:rgba(52,211,153,.07);border:1px solid rgba(52,211,153,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(52,211,153,.88);line-height:1.95;text-align:center">وَرَفَعَ أَبَوَيْهِ عَلَى الْعَرْشِ وَخَرُّوا لَهُ سُجَّدًا — بعد سنوات الفراق</div></div></div>',
+verse:'﴿إِنَّهُ لَا يَيْأَسُ مِن رَّوْحِ اللَّهِ إِلَّا الْقَوْمُ الْكَافِرُونَ﴾',
+text:'بعد عقود من الحزن والانتظار، أعاد الله يوسف لأبيه. <strong>لا يأس مع الله — مهما طال انتظارك لا تقطع رجاءك من رحمة الله.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🌙</div><div class="vtitle">قيمة الصبر الجميل</div><p class="vdesc">الصبر الجميل يعني أن تصبر بلا بث ولا شكوى — تُعبّر لله لا للناس. يعقوب بكى لكنه قال: أشكو بثي لله. هذا فرق الصابر عن المتبرّم.</p><div class="vhadith">عن أبي هريرة رضي الله عنه، أن النبي قال ﷺ: "مَا أُصِيبَ مُسْلِمٌ بِهَمٍّ وَلَا حُزْنٍ حَتَّى الشَّوْكَةِ يُشَاكُهَا، إِلَّا كَفَّرَ اللَّهُ بِهَا مِنْ خَطَايَاهُ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("ماذا قال يعقوب حين فقد يوسف وبكى سنوات؟",["فصبر جميل وأشكو بثي وحزني إلى الله","قاطع أبناءه الآخرين","ترك قومه"],0)+'</div>',text:''},
+];}
+
+function dhulkiflPg(){return[
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1400,#080600);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5"><div style="font-size:4rem;margin-bottom:12px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 18px rgba(253,230,138,.5))">🌟</div><div style="font-family:Amiri,serif;font-size:1.3rem;color:var(--gold);margin-bottom:14px">ذو الكفل — النبي الوفيّ</div><div style="background:rgba(253,230,138,.07);border:1px solid rgba(253,230,138,.2);border-radius:14px;padding:14px;max-width:280px;font-family:Amiri,serif;font-size:.9rem;color:rgba(253,230,138,.9);line-height:2;text-align:center">قيل إنه تكفّل بصيام النهار وقيام الليل والحكم بالعدل — فوفى بعهده</div></div></div></div>',
+verse:'﴿وَاذْكُرْ إِسْمَاعِيلَ وَالْيَسَعَ وَذَا الْكِفْلِ ۚ وَكُلٌّ مِّنَ الْأَخْيَارِ﴾',
+text:'<strong>ذو الكفل عليه السلام</strong> — ذكره الله في القرآن مع الأخيار. قيل إنه تكفّل لله بثلاثة أشياء: صيام النهار وقيام الليل والقضاء بالعدل بين الناس — ففى بعهده كاملاً. <strong>الوفاء بالعهد مع الله أعظم قيمة — لأن الله يعلم ما في القلوب.</strong>',vpill:'الوفاء بالعهد'},
+{visual:'<div style="width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,#1a1000,#080500);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:50px"><div style="text-align:center;z-index:5;max-width:300px"><div style="font-size:3.5rem;margin-bottom:12px;animation:orbP 3s ease-in-out infinite">⚖️</div><div style="font-family:Amiri,serif;font-size:1.1rem;color:var(--gold);margin-bottom:12px">العدل — قضاء بين الناس</div><div style="background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.18);border-radius:12px;padding:14px;font-family:Amiri,serif;font-size:.9rem;color:rgba(251,191,36,.88);line-height:2;text-align:center">تعهّد أن يقضي بين الناس بالعدل في كل يوم — ولم يخلف يوماً واحداً</div></div></div>',
+verse:'﴿إِنَّ اللَّهَ يَأْمُرُ بِالْعَدْلِ وَالْإِحْسَانِ﴾',
+text:'التزم ذو الكفل بعهده مع ربه كل يوم بلا كسل ولا ملل. هذا هو الفرق بين من يعاهد الله وقت الحماس ومن يفي في أيام الكسل. <strong>العهد مع الله لا عطلة له.</strong>'},
+{visual:'<div class="vpage"><div class="vic">🌟</div><div class="vtitle">قيمة الوفاء بالعهد</div><p class="vdesc">ذو الكفل لم يشتهر بالمعجزات الكبيرة — بل بشيء أصعب: الوفاء بالعهد كل يوم بثبات. الاستمرارية في الطاعة أحب إلى الله من طاعة حماسية تنقطع.</p><div class="vhadith">عن عائشة رضي الله عنها، أن النبي قال ﷺ: "أَحَبُّ الأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ"<span style="display:block;font-size:.68rem;color:rgba(212,160,23,.55);text-align:left;direction:rtl;margin-top:5px">(متفق عليه)</span></div>'+mkQ("بماذا اشتُهر ذو الكفل عليه السلام؟",["بالوفاء بعهده مع الله يومياً بلا انقطاع","بالجهاد وفتح الأمصار","بكثرة الدعاء فقط"],0)+'</div>',text:''},
+];}
+
+function defaultPg(id){
+  var all=PROPHETS.concat(SAHABA);var p=all.find(function(x){return x.id===id;});
+  if(!p)return[];
+  return[
+    {visual:'<div class="vpage"><div class="vic">'+p.icon+'</div><div class="vtitle">'+p.full+'</div><p class="vdesc">قصة هذا النبي الكريم قادمة قريباً. استعد لرحلة إيمانية رائعة!</p><div class="vhadith">﴿إِنَّا أَوْحَيْنَا إِلَيْكَ كَمَا أَوْحَيْنَا إِلَىٰ نُوحٍ وَالنَّبِيِّينَ مِن بَعْدِهِ﴾</div></div>',text:''},
+    {visual:'<div class="vpage"><div class="vic">💎</div><div class="vtitle">قيمة: '+p.val+'</div><p class="vdesc">كل نبي علّمنا قيمة نحتاجها في حياتنا اليومية. تعلّم هذه القيمة وطبّقها الآن!</p></div>',text:''},
+  ];
+}
+
+window.toggleSound=toggleSound;
+window.go=go;window.showTab=showTab;window.startStory=startStory;
+window.closeR=closeR;window.nextP=nextP;window.prevP=prevP;
+window.addTQ=addTQ;window.awardBdg=awardBdg;window.buildGrids=buildGrids;
+window.showPageN=showPageN;window.completeStory=completeStory;
+
+
+/* EXTRA GLOBAL ALIASES */
+window.prevP=prevP;window.nextP=nextP;window.showPageN=showPageN;
+window.initInteractions=initInteractions;
+/* Event delegation for dynamic elements */
+document.addEventListener('click',function(e){
+  var t=e.target.closest('[data-action]');
+  if(!t)return;
+  var act=t.dataset.action,val=t.dataset.val;
+  if(act==='go')go(val);
+  else if(act==='start')startStory(val);
+  else if(act==='tab')showTab(val);
+  else if(act==='scav')foundScav(val);
+  else if(act==='dot'){var dn=parseInt(val,10);if(!isNaN(dn))showPageN(dn);}else if(act==='idol'){var n=parseInt(val,10);if(!isNaN(n))smashIdol(n);}
+  else if(act==='heal')healBird();
+  else if(act==='next')nextP();else if(act==='closer')closeR();
+  else if(act==='prev')prevP();
+});
+
+</script>
+</body>
+</html>
